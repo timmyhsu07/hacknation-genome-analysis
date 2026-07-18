@@ -36,7 +36,9 @@ molecular-target gate on top.
    read mean what they say.
 6. **Deterministic target gate.** If a drug's molecular target gene is absent
    from a genome, the call is fixed regardless of what the model thinks, and the
-   override is logged as its own decision source.
+   override is logged as its own decision source. `on_target_absent` may only be
+   configured as `resistant` or `no_call` — `susceptible` is rejected by config
+   validation, because an absent target can never honestly mean "likely to work".
 7. **OOD guard.** A genome far from everything in the training set is flagged and
    returned as a no-call rather than a confident guess.
 

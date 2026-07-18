@@ -117,9 +117,12 @@ def _build_drugs(raw: dict[str, Any]) -> dict[str, dict[str, Any]]:
         ):
             raise ConfigError(f"drugs.{drug}.target_genes must be a list of strings")
         forced = data.get("on_target_absent")
-        if forced not in {"resistant", "susceptible", "no_call"}:
+        if forced not in {"resistant", "no_call"}:
             raise ConfigError(
-                f"drugs.{drug}.on_target_absent must be resistant, susceptible, or no_call"
+                f"drugs.{drug}.on_target_absent must be 'resistant' or 'no_call'. "
+                "'susceptible' is deliberately not allowed: an absent molecular "
+                "target means the drug cannot act on the organism, so the gate "
+                "must never call 'likely to work' purely from target absence."
             )
         drugs[str(drug)] = {
             "target_genes": list(target_genes),

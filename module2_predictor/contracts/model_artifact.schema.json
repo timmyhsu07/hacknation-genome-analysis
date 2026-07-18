@@ -61,7 +61,11 @@
       "required": ["target_genes", "on_target_absent"],
       "properties": {
         "target_genes": { "type": "array", "items": { "type": "string" } },
-        "on_target_absent": { "type": "string", "enum": ["resistant", "susceptible", "no_call"] }
+        "on_target_absent": {
+          "type": "string",
+          "enum": ["resistant", "no_call"],
+          "description": "'susceptible' is intentionally excluded: an absent molecular target means the drug cannot act, so the gate must never resolve to 'likely to work' purely from target absence."
+        }
       }
     },
     "decision": {
