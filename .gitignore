@@ -1,0 +1,6 @@
+.venv/
+__pycache__/
+*.pyc
+*.egg-info/
+.pytest_cache/
+module1_genome_reader/example_run/
