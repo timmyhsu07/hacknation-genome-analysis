@@ -28,9 +28,7 @@
         "ciprofloxacin": "S",
         "gentamicin": "S"
       },
-      "downloaded": true,
-      "total_bp": 5007599,
-      "n_contigs": 87
+      "downloaded": false
     },
     {
       "genome_id": "562.58721",
@@ -39,9 +37,7 @@
         "ciprofloxacin": "R",
         "gentamicin": "R"
       },
-      "downloaded": true,
-      "total_bp": 5436157,
-      "n_contigs": 200
+      "downloaded": false
     },
     {
       "genome_id": "562.114672",
@@ -50,9 +46,7 @@
         "ciprofloxacin": "R",
         "gentamicin": "R"
       },
-      "downloaded": true,
-      "total_bp": 5256088,
-      "n_contigs": 6
+      "downloaded": false
     },
     {
       "genome_id": "562.97941",
@@ -61,9 +55,7 @@
         "ciprofloxacin": "S",
         "gentamicin": "S"
       },
-      "downloaded": true,
-      "total_bp": 4488916,
-      "n_contigs": 102
+      "downloaded": false
     },
     {
       "genome_id": "562.99297",
@@ -72,9 +64,7 @@
         "ciprofloxacin": "S",
         "gentamicin": "S"
       },
-      "downloaded": true,
-      "total_bp": 5100140,
-      "n_contigs": 56
+      "downloaded": false
     },
     {
       "genome_id": "562.98771",
@@ -83,9 +73,7 @@
         "ciprofloxacin": "S",
         "gentamicin": "S"
       },
-      "downloaded": true,
-      "total_bp": 5047425,
-      "n_contigs": 99
+      "downloaded": false
     },
     {
       "genome_id": "562.7673",
@@ -94,9 +82,7 @@
         "ciprofloxacin": "S",
         "gentamicin": "S"
       },
-      "downloaded": true,
-      "total_bp": 5120203,
-      "n_contigs": 171
+      "downloaded": false
     },
     {
       "genome_id": "562.100020",
@@ -105,9 +91,7 @@
         "ciprofloxacin": "S",
         "gentamicin": "S"
       },
-      "downloaded": true,
-      "total_bp": 5016233,
-      "n_contigs": 56
+      "downloaded": false
     },
     {
       "genome_id": "562.100446",
@@ -116,9 +100,7 @@
         "ciprofloxacin": "S",
         "gentamicin": "S"
       },
-      "downloaded": true,
-      "total_bp": 4905868,
-      "n_contigs": 118
+      "downloaded": false
     },
     {
       "genome_id": "562.50271",
@@ -127,9 +109,7 @@
         "ciprofloxacin": "R",
         "gentamicin": "R"
       },
-      "downloaded": true,
-      "total_bp": 5230718,
-      "n_contigs": 115
+      "downloaded": false
     },
     {
       "genome_id": "562.42761",
@@ -138,9 +118,7 @@
         "ciprofloxacin": "R",
         "gentamicin": "S"
       },
-      "downloaded": true,
-      "total_bp": 5092448,
-      "n_contigs": 97
+      "downloaded": false
     },
     {
       "genome_id": "562.98256",
@@ -149,9 +127,7 @@
         "ciprofloxacin": "S",
         "gentamicin": "S"
       },
-      "downloaded": true,
-      "total_bp": 5115574,
-      "n_contigs": 100
+      "downloaded": false
     },
     {
       "genome_id": "562.99134",
@@ -160,9 +136,7 @@
         "ciprofloxacin": "S",
         "gentamicin": "S"
       },
-      "downloaded": true,
-      "total_bp": 5073224,
-      "n_contigs": 83
+      "downloaded": false
     },
     {
       "genome_id": "562.100856",
@@ -171,9 +145,7 @@
         "ciprofloxacin": "R",
         "gentamicin": "S"
       },
-      "downloaded": true,
-      "total_bp": 4686434,
-      "n_contigs": 60
+      "downloaded": false
     },
     {
       "genome_id": "562.65791",
@@ -182,9 +154,7 @@
         "ciprofloxacin": "R",
         "gentamicin": "S"
       },
-      "downloaded": true,
-      "total_bp": 4693519,
-      "n_contigs": 173
+      "downloaded": false
     },
     {
       "genome_id": "562.57458",
@@ -193,9 +163,7 @@
         "ciprofloxacin": "R",
         "gentamicin": "S"
       },
-      "downloaded": true,
-      "total_bp": 4930941,
-      "n_contigs": 104
+      "downloaded": false
     },
     {
       "genome_id": "562.57384",
@@ -204,9 +172,7 @@
         "ciprofloxacin": "R",
         "gentamicin": "R"
       },
-      "downloaded": true,
-      "total_bp": 5039672,
-      "n_contigs": 102
+      "downloaded": false
     },
     {
       "genome_id": "562.100662",
@@ -215,9 +181,7 @@
         "ciprofloxacin": "S",
         "gentamicin": "S"
       },
-      "downloaded": true,
-      "total_bp": 5281913,
-      "n_contigs": 230
+      "downloaded": false
     },
     {
       "genome_id": "562.7677",
@@ -226,9 +190,7 @@
         "ciprofloxacin": "S",
         "gentamicin": "S"
       },
-      "downloaded": true,
-      "total_bp": 5093990,
-      "n_contigs": 177
+      "downloaded": false
     },
     {
       "genome_id": "562.7759",
@@ -237,9 +199,7 @@
         "ciprofloxacin": "S",
         "gentamicin": "S"
       },
-      "downloaded": true,
-      "total_bp": 5240434,
-      "n_contigs": 205
+      "downloaded": false
     },
     {
       "genome_id": "562.99540",
@@ -248,9 +208,7 @@
         "ciprofloxacin": "S",
         "gentamicin": "S"
       },
-      "downloaded": true,
-      "total_bp": 4702359,
-      "n_contigs": 73
+      "downloaded": false
     },
     {
       "genome_id": "562.57093",
@@ -259,9 +217,7 @@
         "ciprofloxacin": "S",
         "gentamicin": "S"
       },
-      "downloaded": true,
-      "total_bp": 4851304,
-      "n_contigs": 149
+      "downloaded": false
     },
     {
       "genome_id": "562.99236",
@@ -270,9 +226,7 @@
         "ciprofloxacin": "S",
         "gentamicin": "S"
       },
-      "downloaded": true,
-      "total_bp": 4954019,
-      "n_contigs": 75
+      "downloaded": false
     },
     {
       "genome_id": "562.98755",
@@ -281,9 +235,7 @@
         "ciprofloxacin": "S",
         "gentamicin": "S"
       },
-      "downloaded": true,
-      "total_bp": 5062505,
-      "n_contigs": 203
+      "downloaded": false
     },
     {
       "genome_id": "562.98184",
@@ -292,9 +244,7 @@
         "ciprofloxacin": "S",
         "gentamicin": "S"
       },
-      "downloaded": true,
-      "total_bp": 5131406,
-      "n_contigs": 125
+      "downloaded": false
     },
     {
       "genome_id": "562.97922",
@@ -303,9 +253,7 @@
         "ciprofloxacin": "S",
         "gentamicin": "S"
       },
-      "downloaded": true,
-      "total_bp": 5193706,
-      "n_contigs": 227
+      "downloaded": false
     },
     {
       "genome_id": "562.100191",
@@ -314,9 +262,7 @@
         "ciprofloxacin": "S",
         "gentamicin": "S"
       },
-      "downloaded": true,
-      "total_bp": 5057010,
-      "n_contigs": 106
+      "downloaded": false
     },
     {
       "genome_id": "562.100448",
@@ -325,9 +271,7 @@
         "ciprofloxacin": "S",
         "gentamicin": "S"
       },
-      "downloaded": true,
-      "total_bp": 5118961,
-      "n_contigs": 54
+      "downloaded": false
     },
     {
       "genome_id": "562.100687",
@@ -336,9 +280,7 @@
         "ciprofloxacin": "S",
         "gentamicin": "S"
       },
-      "downloaded": true,
-      "total_bp": 5173815,
-      "n_contigs": 123
+      "downloaded": false
     },
     {
       "genome_id": "562.42870",
@@ -347,9 +289,7 @@
         "ciprofloxacin": "S",
         "gentamicin": "S"
       },
-      "downloaded": true,
-      "total_bp": 5091262,
-      "n_contigs": 178
+      "downloaded": false
     },
     {
       "genome_id": "562.57436",
@@ -358,9 +298,7 @@
         "ciprofloxacin": "R",
         "gentamicin": "S"
       },
-      "downloaded": true,
-      "total_bp": 4931804,
-      "n_contigs": 72
+      "downloaded": false
     },
     {
       "genome_id": "562.144949",
@@ -369,9 +307,7 @@
         "ciprofloxacin": "S",
         "gentamicin": "S"
       },
-      "downloaded": true,
-      "total_bp": 5093846,
-      "n_contigs": 223
+      "downloaded": false
     },
     {
       "genome_id": "562.100449",
@@ -380,9 +316,7 @@
         "ciprofloxacin": "R",
         "gentamicin": "R"
       },
-      "downloaded": true,
-      "total_bp": 5128100,
-      "n_contigs": 112
+      "downloaded": false
     },
     {
       "genome_id": "562.100642",
@@ -391,9 +325,7 @@
         "ciprofloxacin": "S",
         "gentamicin": "S"
       },
-      "downloaded": true,
-      "total_bp": 5225507,
-      "n_contigs": 83
+      "downloaded": false
     },
     {
       "genome_id": "562.99408",
@@ -402,9 +334,7 @@
         "ciprofloxacin": "S",
         "gentamicin": "S"
       },
-      "downloaded": true,
-      "total_bp": 5018137,
-      "n_contigs": 71
+      "downloaded": false
     },
     {
       "genome_id": "562.97863",
@@ -413,9 +343,7 @@
         "ciprofloxacin": "S",
         "gentamicin": "S"
       },
-      "downloaded": true,
-      "total_bp": 5250910,
-      "n_contigs": 124
+      "downloaded": false
     },
     {
       "genome_id": "562.98896",
@@ -424,9 +352,7 @@
         "ciprofloxacin": "S",
         "gentamicin": "S"
       },
-      "downloaded": true,
-      "total_bp": 5116069,
-      "n_contigs": 109
+      "downloaded": false
     },
     {
       "genome_id": "562.145029",
@@ -435,9 +361,7 @@
         "ciprofloxacin": "S",
         "gentamicin": "S"
       },
-      "downloaded": true,
-      "total_bp": 5571630,
-      "n_contigs": 379
+      "downloaded": false
     },
     {
       "genome_id": "562.98568",
@@ -446,9 +370,7 @@
         "ciprofloxacin": "S",
         "gentamicin": "S"
       },
-      "downloaded": true,
-      "total_bp": 4948396,
-      "n_contigs": 57
+      "downloaded": false
     },
     {
       "genome_id": "562.99909",
@@ -457,9 +379,7 @@
         "ciprofloxacin": "S",
         "gentamicin": "S"
       },
-      "downloaded": true,
-      "total_bp": 5070682,
-      "n_contigs": 120
+      "downloaded": false
     }
   ],
   "n_accepted": 40,

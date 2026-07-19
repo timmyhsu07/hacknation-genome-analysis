@@ -10,6 +10,10 @@ module1_genome_reader/example_run/
 
 # AMR reference database (large, downloadable separately)
 module1_genome_reader/amrdb/
+
+# Downloaded genome cohorts (regenerate with scripts/fetch_bvbrc_ecoli.py)
+data/
+module1_genome_reader/data/
 .gstack/
 
 # Demo cohort: raw genome FASTAs (197M, re-fetch via scripts/fetch_bvbrc_ecoli.py)

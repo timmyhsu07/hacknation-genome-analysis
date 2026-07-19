@@ -63,3 +63,25 @@ def score_binary(y_true: np.ndarray, y_prob: np.ndarray, calls: list[str]) -> di
         precision, recall, _ = sk_metrics.precision_recall_curve(y_true, y_prob)
         out["pr_auc"] = _nullable(sk_metrics.auc(recall, precision))
     return out
+
+
+def no_call_stats(y_true: np.ndarray, final_calls: list[str]) -> dict[str, Any]:
+    """How often the system abstains, and accuracy on the predictions it did make.
+
+    Uses the pipeline's FINAL call (after gate/OOD/low-confidence overrides), so
+    ``accuracy_on_called`` is genuinely the accuracy of the non-no-call subset --
+    the number the success criteria ask for alongside the no-call rate.
+    """
+    yt = np.asarray(y_true, dtype=int)
+    calls_arr = np.asarray(final_calls, dtype=object)
+    n = int(calls_arr.size)
+    out: dict[str, Any] = {"no_call_rate": None, "n_called": 0, "accuracy_on_called": None}
+    if n == 0:
+        return out
+    out["no_call_rate"] = _nullable(float((calls_arr == "no_call").sum()) / n)
+    called = np.isin(calls_arr, ["resistant", "susceptible"])
+    out["n_called"] = int(called.sum())
+    if called.any():
+        y_pred = np.where(calls_arr[called] == "resistant", 1, 0)
+        out["accuracy_on_called"] = _nullable(float((y_pred == yt[called]).mean()))
+    return out

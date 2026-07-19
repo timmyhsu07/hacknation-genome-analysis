@@ -21,9 +21,18 @@ DRUG_CATALOG: dict[str, frozenset[str]] = {
 }
 
 
+# Case-insensitive index: Module 2's real artifacts use lowercase drug names
+# ("ampicillin"), while the mock/demo path uses title case ("Ampicillin"). Both
+# must resolve to the same AMR classes, or the known-mechanism evidence tier can
+# never fire on the real pipeline.
+_CATALOG_BY_LOWER: dict[str, frozenset[str]] = {
+    name.lower(): classes for name, classes in DRUG_CATALOG.items()
+}
+
+
 def classes_for(drug: str) -> set[str]:
-    """AMR classes for a drug (empty set if unknown)."""
-    return set(DRUG_CATALOG.get(drug, frozenset()))
+    """AMR classes for a drug, matched case-insensitively (empty set if unknown)."""
+    return set(_CATALOG_BY_LOWER.get(drug.strip().lower(), frozenset()))
 
 
 # Representative determinants per class, for building mock features. Each entry:

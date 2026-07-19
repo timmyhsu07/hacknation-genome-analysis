@@ -30,7 +30,7 @@ from .io import (
     matrix_values,
     write_json,
 )
-from .metrics import score_binary
+from .metrics import no_call_stats, score_binary
 from .model import ConstantProbabilityModel
 from .report import write_reliability_plot
 from .splits import Fold, make_folds
@@ -229,13 +229,15 @@ def _metric_entry(
             per_group[str(int(cluster_id))] = {
                 "n": int(len(group)),
                 **score_binary(y_true[idx], y_prob[idx], group["model_call"].tolist()),
+                **no_call_stats(y_true[idx], group["final_call"].tolist()),
             }
     return {
         "n_genomes": int(len(records)),
         "n_clusters": int(n_clusters),
-        "overall": score_binary(
-            y_true, y_prob, pd.DataFrame(records)["model_call"].tolist()
-        ),
+        "overall": {
+            **score_binary(y_true, y_prob, rec_df["model_call"].tolist()),
+            **no_call_stats(y_true, rec_df["final_call"].tolist()),
+        },
         "per_group": per_group,
     }
 

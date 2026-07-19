@@ -44,6 +44,7 @@ import argparse
 import csv
 import io
 import json
+import ssl
 import sys
 import time
 import urllib.error
@@ -51,6 +52,20 @@ import urllib.parse
 import urllib.request
 from collections import Counter, defaultdict
 from pathlib import Path
+
+
+def _ssl_context() -> ssl.SSLContext:
+    """Build a verifying SSL context that works even when the Python install has no
+    configured CA store (a common macOS framework-Python issue). Prefers certifi's
+    bundle if importable, else the system default; never disables verification."""
+    try:
+        import certifi
+        return ssl.create_default_context(cafile=certifi.where())
+    except Exception:
+        return ssl.create_default_context()
+
+
+_SSL_CTX = _ssl_context()
 
 API = "https://www.bv-brc.org/api"
 ECOLI_TAXON = 562
@@ -77,7 +92,7 @@ def _get(path: str, accept: str = "application/json", retries: int = 4, timeout:
             headers={"Accept": accept, "User-Agent": "genome-firewall-demo/1.0 (+hacknation)"},
         )
         try:
-            with urllib.request.urlopen(req, timeout=timeout) as resp:
+            with urllib.request.urlopen(req, timeout=timeout, context=_SSL_CTX) as resp:
                 return resp.read()
         except (urllib.error.URLError, urllib.error.HTTPError, TimeoutError) as exc:
             last = exc
