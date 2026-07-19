@@ -1,0 +1,1690 @@
+{
+  "source": "BV-BRC data API (genome_amr + genome_sequence)",
+  "api": "https://www.bv-brc.org/api",
+  "species": "Escherichia coli",
+  "taxon_id": 562,
+  "drugs": [
+    "ampicillin",
+    "ciprofloxacin",
+    "gentamicin"
+  ],
+  "target_genes": [
+    "gyrA",
+    "parC",
+    "ftsI",
+    "rpsL"
+  ],
+  "target_genes_assumption": "present(1) for QC'd E. coli; targets are essential genes, not readable from the AMR matrix (see script docstring)",
+  "label_resolution": "majority vote over per-test genome_amr rows; ties dropped",
+  "qc_window_bp": [
+    3500000,
+    7500000
+  ],
+  "genomes": [
+    {
+      "genome_id": "562.98656",
+      "labels": {
+        "ampicillin": "R",
+        "ciprofloxacin": "S",
+        "gentamicin": "S"
+      },
+      "downloaded": true,
+      "total_bp": 5007599,
+      "n_contigs": 87
+    },
+    {
+      "genome_id": "562.58721",
+      "labels": {
+        "ampicillin": "R",
+        "ciprofloxacin": "R",
+        "gentamicin": "R"
+      },
+      "downloaded": true,
+      "total_bp": 5436157,
+      "n_contigs": 200
+    },
+    {
+      "genome_id": "562.114672",
+      "labels": {
+        "ampicillin": "R",
+        "ciprofloxacin": "R",
+        "gentamicin": "R"
+      },
+      "downloaded": true,
+      "total_bp": 5256088,
+      "n_contigs": 6
+    },
+    {
+      "genome_id": "562.97941",
+      "labels": {
+        "ampicillin": "S",
+        "ciprofloxacin": "S",
+        "gentamicin": "S"
+      },
+      "downloaded": true,
+      "total_bp": 4488916,
+      "n_contigs": 102
+    },
+    {
+      "genome_id": "562.99297",
+      "labels": {
+        "ampicillin": "S",
+        "ciprofloxacin": "S",
+        "gentamicin": "S"
+      },
+      "downloaded": true,
+      "total_bp": 5100140,
+      "n_contigs": 56
+    },
+    {
+      "genome_id": "562.98771",
+      "labels": {
+        "ampicillin": "S",
+        "ciprofloxacin": "S",
+        "gentamicin": "S"
+      },
+      "downloaded": true,
+      "total_bp": 5047425,
+      "n_contigs": 99
+    },
+    {
+      "genome_id": "562.7673",
+      "labels": {
+        "ampicillin": "R",
+        "ciprofloxacin": "S",
+        "gentamicin": "S"
+      },
+      "downloaded": true,
+      "total_bp": 5120203,
+      "n_contigs": 171
+    },
+    {
+      "genome_id": "562.100020",
+      "labels": {
+        "ampicillin": "S",
+        "ciprofloxacin": "S",
+        "gentamicin": "S"
+      },
+      "downloaded": true,
+      "total_bp": 5016233,
+      "n_contigs": 56
+    },
+    {
+      "genome_id": "562.100446",
+      "labels": {
+        "ampicillin": "R",
+        "ciprofloxacin": "S",
+        "gentamicin": "S"
+      },
+      "downloaded": true,
+      "total_bp": 4905868,
+      "n_contigs": 118
+    },
+    {
+      "genome_id": "562.50271",
+      "labels": {
+        "ampicillin": "R",
+        "ciprofloxacin": "R",
+        "gentamicin": "R"
+      },
+      "downloaded": true,
+      "total_bp": 5230718,
+      "n_contigs": 115
+    },
+    {
+      "genome_id": "562.42761",
+      "labels": {
+        "ampicillin": "R",
+        "ciprofloxacin": "R",
+        "gentamicin": "S"
+      },
+      "downloaded": true,
+      "total_bp": 5092448,
+      "n_contigs": 97
+    },
+    {
+      "genome_id": "562.98256",
+      "labels": {
+        "ampicillin": "S",
+        "ciprofloxacin": "S",
+        "gentamicin": "S"
+      },
+      "downloaded": true,
+      "total_bp": 5115574,
+      "n_contigs": 100
+    },
+    {
+      "genome_id": "562.99134",
+      "labels": {
+        "ampicillin": "S",
+        "ciprofloxacin": "S",
+        "gentamicin": "S"
+      },
+      "downloaded": true,
+      "total_bp": 5073224,
+      "n_contigs": 83
+    },
+    {
+      "genome_id": "562.100856",
+      "labels": {
+        "ampicillin": "S",
+        "ciprofloxacin": "R",
+        "gentamicin": "S"
+      },
+      "downloaded": true,
+      "total_bp": 4686434,
+      "n_contigs": 60
+    },
+    {
+      "genome_id": "562.65791",
+      "labels": {
+        "ampicillin": "R",
+        "ciprofloxacin": "R",
+        "gentamicin": "S"
+      },
+      "downloaded": true,
+      "total_bp": 4693519,
+      "n_contigs": 173
+    },
+    {
+      "genome_id": "562.57458",
+      "labels": {
+        "ampicillin": "R",
+        "ciprofloxacin": "R",
+        "gentamicin": "S"
+      },
+      "downloaded": true,
+      "total_bp": 4930941,
+      "n_contigs": 104
+    },
+    {
+      "genome_id": "562.57384",
+      "labels": {
+        "ampicillin": "R",
+        "ciprofloxacin": "R",
+        "gentamicin": "R"
+      },
+      "downloaded": true,
+      "total_bp": 5039672,
+      "n_contigs": 102
+    },
+    {
+      "genome_id": "562.100662",
+      "labels": {
+        "ampicillin": "R",
+        "ciprofloxacin": "S",
+        "gentamicin": "S"
+      },
+      "downloaded": true,
+      "total_bp": 5281913,
+      "n_contigs": 230
+    },
+    {
+      "genome_id": "562.7677",
+      "labels": {
+        "ampicillin": "S",
+        "ciprofloxacin": "S",
+        "gentamicin": "S"
+      },
+      "downloaded": true,
+      "total_bp": 5093990,
+      "n_contigs": 177
+    },
+    {
+      "genome_id": "562.7759",
+      "labels": {
+        "ampicillin": "S",
+        "ciprofloxacin": "S",
+        "gentamicin": "S"
+      },
+      "downloaded": true,
+      "total_bp": 5240434,
+      "n_contigs": 205
+    },
+    {
+      "genome_id": "562.99540",
+      "labels": {
+        "ampicillin": "S",
+        "ciprofloxacin": "S",
+        "gentamicin": "S"
+      },
+      "downloaded": true,
+      "total_bp": 4702359,
+      "n_contigs": 73
+    },
+    {
+      "genome_id": "562.57093",
+      "labels": {
+        "ampicillin": "R",
+        "ciprofloxacin": "S",
+        "gentamicin": "S"
+      },
+      "downloaded": true,
+      "total_bp": 4851304,
+      "n_contigs": 149
+    },
+    {
+      "genome_id": "562.99236",
+      "labels": {
+        "ampicillin": "S",
+        "ciprofloxacin": "S",
+        "gentamicin": "S"
+      },
+      "downloaded": true,
+      "total_bp": 4954019,
+      "n_contigs": 75
+    },
+    {
+      "genome_id": "562.98755",
+      "labels": {
+        "ampicillin": "S",
+        "ciprofloxacin": "S",
+        "gentamicin": "S"
+      },
+      "downloaded": true,
+      "total_bp": 5062505,
+      "n_contigs": 203
+    },
+    {
+      "genome_id": "562.98184",
+      "labels": {
+        "ampicillin": "S",
+        "ciprofloxacin": "S",
+        "gentamicin": "S"
+      },
+      "downloaded": true,
+      "total_bp": 5131406,
+      "n_contigs": 125
+    },
+    {
+      "genome_id": "562.97922",
+      "labels": {
+        "ampicillin": "S",
+        "ciprofloxacin": "S",
+        "gentamicin": "S"
+      },
+      "downloaded": true,
+      "total_bp": 5193706,
+      "n_contigs": 227
+    },
+    {
+      "genome_id": "562.100191",
+      "labels": {
+        "ampicillin": "S",
+        "ciprofloxacin": "S",
+        "gentamicin": "S"
+      },
+      "downloaded": true,
+      "total_bp": 5057010,
+      "n_contigs": 106
+    },
+    {
+      "genome_id": "562.100448",
+      "labels": {
+        "ampicillin": "S",
+        "ciprofloxacin": "S",
+        "gentamicin": "S"
+      },
+      "downloaded": true,
+      "total_bp": 5118961,
+      "n_contigs": 54
+    },
+    {
+      "genome_id": "562.100687",
+      "labels": {
+        "ampicillin": "S",
+        "ciprofloxacin": "S",
+        "gentamicin": "S"
+      },
+      "downloaded": true,
+      "total_bp": 5173815,
+      "n_contigs": 123
+    },
+    {
+      "genome_id": "562.42870",
+      "labels": {
+        "ampicillin": "R",
+        "ciprofloxacin": "S",
+        "gentamicin": "S"
+      },
+      "downloaded": true,
+      "total_bp": 5091262,
+      "n_contigs": 178
+    },
+    {
+      "genome_id": "562.57436",
+      "labels": {
+        "ampicillin": "R",
+        "ciprofloxacin": "R",
+        "gentamicin": "S"
+      },
+      "downloaded": true,
+      "total_bp": 4931804,
+      "n_contigs": 72
+    },
+    {
+      "genome_id": "562.144949",
+      "labels": {
+        "ampicillin": "S",
+        "ciprofloxacin": "S",
+        "gentamicin": "S"
+      },
+      "downloaded": true,
+      "total_bp": 5093846,
+      "n_contigs": 223
+    },
+    {
+      "genome_id": "562.100449",
+      "labels": {
+        "ampicillin": "R",
+        "ciprofloxacin": "R",
+        "gentamicin": "R"
+      },
+      "downloaded": true,
+      "total_bp": 5128100,
+      "n_contigs": 112
+    },
+    {
+      "genome_id": "562.100642",
+      "labels": {
+        "ampicillin": "S",
+        "ciprofloxacin": "S",
+        "gentamicin": "S"
+      },
+      "downloaded": true,
+      "total_bp": 5225507,
+      "n_contigs": 83
+    },
+    {
+      "genome_id": "562.99408",
+      "labels": {
+        "ampicillin": "S",
+        "ciprofloxacin": "S",
+        "gentamicin": "S"
+      },
+      "downloaded": true,
+      "total_bp": 5018137,
+      "n_contigs": 71
+    },
+    {
+      "genome_id": "562.97863",
+      "labels": {
+        "ampicillin": "R",
+        "ciprofloxacin": "S",
+        "gentamicin": "S"
+      },
+      "downloaded": true,
+      "total_bp": 5250910,
+      "n_contigs": 124
+    },
+    {
+      "genome_id": "562.98896",
+      "labels": {
+        "ampicillin": "R",
+        "ciprofloxacin": "S",
+        "gentamicin": "S"
+      },
+      "downloaded": true,
+      "total_bp": 5116069,
+      "n_contigs": 109
+    },
+    {
+      "genome_id": "562.145029",
+      "labels": {
+        "ampicillin": "S",
+        "ciprofloxacin": "S",
+        "gentamicin": "S"
+      },
+      "downloaded": true,
+      "total_bp": 5571630,
+      "n_contigs": 379
+    },
+    {
+      "genome_id": "562.98568",
+      "labels": {
+        "ampicillin": "S",
+        "ciprofloxacin": "S",
+        "gentamicin": "S"
+      },
+      "downloaded": true,
+      "total_bp": 4948396,
+      "n_contigs": 57
+    },
+    {
+      "genome_id": "562.99909",
+      "labels": {
+        "ampicillin": "S",
+        "ciprofloxacin": "S",
+        "gentamicin": "S"
+      },
+      "downloaded": true,
+      "total_bp": 5070682,
+      "n_contigs": 120
+    },
+    {
+      "genome_id": "562.99019",
+      "labels": {
+        "ampicillin": "S",
+        "ciprofloxacin": "S",
+        "gentamicin": "S"
+      },
+      "downloaded": true,
+      "total_bp": 5032306,
+      "n_contigs": 158
+    },
+    {
+      "genome_id": "562.99937",
+      "labels": {
+        "ampicillin": "R",
+        "ciprofloxacin": "S",
+        "gentamicin": "S"
+      },
+      "downloaded": true,
+      "total_bp": 4941998,
+      "n_contigs": 72
+    },
+    {
+      "genome_id": "562.99857",
+      "labels": {
+        "ampicillin": "S",
+        "ciprofloxacin": "S",
+        "gentamicin": "S"
+      },
+      "downloaded": true,
+      "total_bp": 5112332,
+      "n_contigs": 194
+    },
+    {
+      "genome_id": "562.99059",
+      "labels": {
+        "ampicillin": "R",
+        "ciprofloxacin": "S",
+        "gentamicin": "S"
+      },
+      "downloaded": true,
+      "total_bp": 5110324,
+      "n_contigs": 119
+    },
+    {
+      "genome_id": "562.98261",
+      "labels": {
+        "ampicillin": "S",
+        "ciprofloxacin": "S",
+        "gentamicin": "S"
+      },
+      "downloaded": true,
+      "total_bp": 5082743,
+      "n_contigs": 163
+    },
+    {
+      "genome_id": "562.99849",
+      "labels": {
+        "ampicillin": "R",
+        "ciprofloxacin": "S",
+        "gentamicin": "S"
+      },
+      "downloaded": true,
+      "total_bp": 5041024,
+      "n_contigs": 164
+    },
+    {
+      "genome_id": "562.144961",
+      "labels": {
+        "ampicillin": "S",
+        "ciprofloxacin": "S",
+        "gentamicin": "S"
+      },
+      "downloaded": true,
+      "total_bp": 5164288,
+      "n_contigs": 245
+    },
+    {
+      "genome_id": "562.45629",
+      "labels": {
+        "ampicillin": "R",
+        "ciprofloxacin": "R",
+        "gentamicin": "S"
+      },
+      "downloaded": true,
+      "total_bp": 5144007,
+      "n_contigs": 161
+    },
+    {
+      "genome_id": "562.99843",
+      "labels": {
+        "ampicillin": "S",
+        "ciprofloxacin": "S",
+        "gentamicin": "S"
+      },
+      "downloaded": true,
+      "total_bp": 5159569,
+      "n_contigs": 126
+    },
+    {
+      "genome_id": "562.57169",
+      "labels": {
+        "ampicillin": "R",
+        "ciprofloxacin": "S",
+        "gentamicin": "R"
+      },
+      "downloaded": true,
+      "total_bp": 5250591,
+      "n_contigs": 90
+    },
+    {
+      "genome_id": "562.98680",
+      "labels": {
+        "ampicillin": "S",
+        "ciprofloxacin": "R",
+        "gentamicin": "S"
+      },
+      "downloaded": true,
+      "total_bp": 4783087,
+      "n_contigs": 106
+    },
+    {
+      "genome_id": "562.100780",
+      "labels": {
+        "ampicillin": "S",
+        "ciprofloxacin": "S",
+        "gentamicin": "S"
+      },
+      "downloaded": true,
+      "total_bp": 5094179,
+      "n_contigs": 55
+    },
+    {
+      "genome_id": "562.57145",
+      "labels": {
+        "ampicillin": "R",
+        "ciprofloxacin": "S",
+        "gentamicin": "S"
+      },
+      "downloaded": true,
+      "total_bp": 5128944,
+      "n_contigs": 553
+    },
+    {
+      "genome_id": "562.140833",
+      "labels": {
+        "ampicillin": "R",
+        "ciprofloxacin": "R",
+        "gentamicin": "R"
+      },
+      "downloaded": true,
+      "total_bp": 4916151,
+      "n_contigs": 157
+    },
+    {
+      "genome_id": "562.99152",
+      "labels": {
+        "ampicillin": "R",
+        "ciprofloxacin": "R",
+        "gentamicin": "R"
+      },
+      "downloaded": true,
+      "total_bp": 5301554,
+      "n_contigs": 180
+    },
+    {
+      "genome_id": "562.58754",
+      "labels": {
+        "ampicillin": "R",
+        "ciprofloxacin": "S",
+        "gentamicin": "S"
+      },
+      "downloaded": true,
+      "total_bp": 5182576,
+      "n_contigs": 181
+    },
+    {
+      "genome_id": "562.98766",
+      "labels": {
+        "ampicillin": "R",
+        "ciprofloxacin": "S",
+        "gentamicin": "S"
+      },
+      "downloaded": true,
+      "total_bp": 5052807,
+      "n_contigs": 76
+    },
+    {
+      "genome_id": "562.45671",
+      "labels": {
+        "ampicillin": "S",
+        "ciprofloxacin": "R",
+        "gentamicin": "S"
+      },
+      "downloaded": true,
+      "total_bp": 4706036,
+      "n_contigs": 52
+    },
+    {
+      "genome_id": "562.98447",
+      "labels": {
+        "ampicillin": "S",
+        "ciprofloxacin": "S",
+        "gentamicin": "S"
+      },
+      "downloaded": true,
+      "total_bp": 5006714,
+      "n_contigs": 177
+    },
+    {
+      "genome_id": "562.98612",
+      "labels": {
+        "ampicillin": "R",
+        "ciprofloxacin": "S",
+        "gentamicin": "S"
+      },
+      "downloaded": true,
+      "total_bp": 5359696,
+      "n_contigs": 165
+    },
+    {
+      "genome_id": "562.99371",
+      "labels": {
+        "ampicillin": "S",
+        "ciprofloxacin": "S",
+        "gentamicin": "S"
+      },
+      "downloaded": true,
+      "total_bp": 4949930,
+      "n_contigs": 30
+    },
+    {
+      "genome_id": "562.99382",
+      "labels": {
+        "ampicillin": "S",
+        "ciprofloxacin": "S",
+        "gentamicin": "S"
+      },
+      "downloaded": true,
+      "total_bp": 5141126,
+      "n_contigs": 114
+    },
+    {
+      "genome_id": "562.140870",
+      "labels": {
+        "ampicillin": "R",
+        "ciprofloxacin": "R",
+        "gentamicin": "S"
+      },
+      "downloaded": true,
+      "total_bp": 5237277,
+      "n_contigs": 148
+    },
+    {
+      "genome_id": "562.99097",
+      "labels": {
+        "ampicillin": "R",
+        "ciprofloxacin": "S",
+        "gentamicin": "S"
+      },
+      "downloaded": true,
+      "total_bp": 5247479,
+      "n_contigs": 116
+    },
+    {
+      "genome_id": "562.99787",
+      "labels": {
+        "ampicillin": "R",
+        "ciprofloxacin": "S",
+        "gentamicin": "S"
+      },
+      "downloaded": true,
+      "total_bp": 4924973,
+      "n_contigs": 97
+    },
+    {
+      "genome_id": "562.100960",
+      "labels": {
+        "ampicillin": "R",
+        "ciprofloxacin": "S",
+        "gentamicin": "S"
+      },
+      "downloaded": true,
+      "total_bp": 5280542,
+      "n_contigs": 181
+    },
+    {
+      "genome_id": "562.42862",
+      "labels": {
+        "ampicillin": "R",
+        "ciprofloxacin": "R",
+        "gentamicin": "S"
+      },
+      "downloaded": true,
+      "total_bp": 5307159,
+      "n_contigs": 121
+    },
+    {
+      "genome_id": "562.97890",
+      "labels": {
+        "ampicillin": "S",
+        "ciprofloxacin": "S",
+        "gentamicin": "S"
+      },
+      "downloaded": true,
+      "total_bp": 5149584,
+      "n_contigs": 79
+    },
+    {
+      "genome_id": "562.97784",
+      "labels": {
+        "ampicillin": "S",
+        "ciprofloxacin": "S",
+        "gentamicin": "S"
+      },
+      "downloaded": true,
+      "total_bp": 5065930,
+      "n_contigs": 212
+    },
+    {
+      "genome_id": "562.99219",
+      "labels": {
+        "ampicillin": "R",
+        "ciprofloxacin": "S",
+        "gentamicin": "S"
+      },
+      "downloaded": true,
+      "total_bp": 5020522,
+      "n_contigs": 101
+    },
+    {
+      "genome_id": "562.22688",
+      "labels": {
+        "ampicillin": "R",
+        "ciprofloxacin": "S",
+        "gentamicin": "S"
+      },
+      "downloaded": true,
+      "total_bp": 5382713,
+      "n_contigs": 146
+    },
+    {
+      "genome_id": "562.42775",
+      "labels": {
+        "ampicillin": "R",
+        "ciprofloxacin": "R",
+        "gentamicin": "R"
+      },
+      "downloaded": true,
+      "total_bp": 4757667,
+      "n_contigs": 149
+    },
+    {
+      "genome_id": "562.99671",
+      "labels": {
+        "ampicillin": "R",
+        "ciprofloxacin": "S",
+        "gentamicin": "S"
+      },
+      "downloaded": true,
+      "total_bp": 5239983,
+      "n_contigs": 120
+    },
+    {
+      "genome_id": "562.98811",
+      "labels": {
+        "ampicillin": "R",
+        "ciprofloxacin": "S",
+        "gentamicin": "S"
+      },
+      "downloaded": true,
+      "total_bp": 5121751,
+      "n_contigs": 118
+    },
+    {
+      "genome_id": "562.22567",
+      "labels": {
+        "ampicillin": "R",
+        "ciprofloxacin": "S",
+        "gentamicin": "S"
+      },
+      "downloaded": true,
+      "total_bp": 4996714,
+      "n_contigs": 151
+    },
+    {
+      "genome_id": "562.97805",
+      "labels": {
+        "ampicillin": "R",
+        "ciprofloxacin": "S",
+        "gentamicin": "S"
+      },
+      "downloaded": true,
+      "total_bp": 5274745,
+      "n_contigs": 113
+    },
+    {
+      "genome_id": "562.97802",
+      "labels": {
+        "ampicillin": "R",
+        "ciprofloxacin": "S",
+        "gentamicin": "S"
+      },
+      "downloaded": true,
+      "total_bp": 5118269,
+      "n_contigs": 109
+    },
+    {
+      "genome_id": "562.98847",
+      "labels": {
+        "ampicillin": "R",
+        "ciprofloxacin": "S",
+        "gentamicin": "S"
+      },
+      "downloaded": true,
+      "total_bp": 4939400,
+      "n_contigs": 105
+    },
+    {
+      "genome_id": "562.100812",
+      "labels": {
+        "ampicillin": "S",
+        "ciprofloxacin": "S",
+        "gentamicin": "S"
+      },
+      "downloaded": true,
+      "total_bp": 4946506,
+      "n_contigs": 75
+    },
+    {
+      "genome_id": "562.98535",
+      "labels": {
+        "ampicillin": "S",
+        "ciprofloxacin": "S",
+        "gentamicin": "S"
+      },
+      "downloaded": true,
+      "total_bp": 4588951,
+      "n_contigs": 38
+    },
+    {
+      "genome_id": "562.100863",
+      "labels": {
+        "ampicillin": "R",
+        "ciprofloxacin": "R",
+        "gentamicin": "R"
+      },
+      "downloaded": true,
+      "total_bp": 5237751,
+      "n_contigs": 107
+    },
+    {
+      "genome_id": "562.97751",
+      "labels": {
+        "ampicillin": "R",
+        "ciprofloxacin": "S",
+        "gentamicin": "S"
+      },
+      "downloaded": true,
+      "total_bp": 5061174,
+      "n_contigs": 129
+    },
+    {
+      "genome_id": "562.100519",
+      "labels": {
+        "ampicillin": "S",
+        "ciprofloxacin": "S",
+        "gentamicin": "S"
+      },
+      "downloaded": true,
+      "total_bp": 5201247,
+      "n_contigs": 114
+    },
+    {
+      "genome_id": "562.22712",
+      "labels": {
+        "ampicillin": "S",
+        "ciprofloxacin": "S",
+        "gentamicin": "S"
+      },
+      "downloaded": true,
+      "total_bp": 4953790,
+      "n_contigs": 87
+    },
+    {
+      "genome_id": "562.7734",
+      "labels": {
+        "ampicillin": "S",
+        "ciprofloxacin": "S",
+        "gentamicin": "S"
+      },
+      "downloaded": true,
+      "total_bp": 5300706,
+      "n_contigs": 200
+    },
+    {
+      "genome_id": "562.57407",
+      "labels": {
+        "ampicillin": "R",
+        "ciprofloxacin": "S",
+        "gentamicin": "R"
+      },
+      "downloaded": true,
+      "total_bp": 4897217,
+      "n_contigs": 217
+    },
+    {
+      "genome_id": "562.99575",
+      "labels": {
+        "ampicillin": "S",
+        "ciprofloxacin": "S",
+        "gentamicin": "S"
+      },
+      "downloaded": true,
+      "total_bp": 5331945,
+      "n_contigs": 107
+    },
+    {
+      "genome_id": "562.98406",
+      "labels": {
+        "ampicillin": "R",
+        "ciprofloxacin": "R",
+        "gentamicin": "S"
+      },
+      "downloaded": true,
+      "total_bp": 5115354,
+      "n_contigs": 89
+    },
+    {
+      "genome_id": "562.144973",
+      "labels": {
+        "ampicillin": "S",
+        "ciprofloxacin": "S",
+        "gentamicin": "S"
+      },
+      "downloaded": true,
+      "total_bp": 4917441,
+      "n_contigs": 276
+    },
+    {
+      "genome_id": "562.97872",
+      "labels": {
+        "ampicillin": "S",
+        "ciprofloxacin": "S",
+        "gentamicin": "S"
+      },
+      "downloaded": true,
+      "total_bp": 5115499,
+      "n_contigs": 110
+    },
+    {
+      "genome_id": "562.99558",
+      "labels": {
+        "ampicillin": "R",
+        "ciprofloxacin": "S",
+        "gentamicin": "S"
+      },
+      "downloaded": true,
+      "total_bp": 5255520,
+      "n_contigs": 146
+    },
+    {
+      "genome_id": "562.100719",
+      "labels": {
+        "ampicillin": "R",
+        "ciprofloxacin": "R",
+        "gentamicin": "S"
+      },
+      "downloaded": true,
+      "total_bp": 5040731,
+      "n_contigs": 62
+    },
+    {
+      "genome_id": "562.22434",
+      "labels": {
+        "ampicillin": "R",
+        "ciprofloxacin": "R",
+        "gentamicin": "S"
+      },
+      "downloaded": true,
+      "total_bp": 5133421,
+      "n_contigs": 101
+    },
+    {
+      "genome_id": "562.100805",
+      "labels": {
+        "ampicillin": "R",
+        "ciprofloxacin": "S",
+        "gentamicin": "S"
+      },
+      "downloaded": true,
+      "total_bp": 4880834,
+      "n_contigs": 76
+    },
+    {
+      "genome_id": "562.97956",
+      "labels": {
+        "ampicillin": "S",
+        "ciprofloxacin": "S",
+        "gentamicin": "S"
+      },
+      "downloaded": true,
+      "total_bp": 4835190,
+      "n_contigs": 86
+    },
+    {
+      "genome_id": "562.99040",
+      "labels": {
+        "ampicillin": "S",
+        "ciprofloxacin": "S",
+        "gentamicin": "S"
+      },
+      "downloaded": true,
+      "total_bp": 5123725,
+      "n_contigs": 74
+    },
+    {
+      "genome_id": "562.100922",
+      "labels": {
+        "ampicillin": "R",
+        "ciprofloxacin": "S",
+        "gentamicin": "S"
+      },
+      "downloaded": true,
+      "total_bp": 5123703,
+      "n_contigs": 82
+    },
+    {
+      "genome_id": "562.42825",
+      "labels": {
+        "ampicillin": "R",
+        "ciprofloxacin": "R",
+        "gentamicin": "S"
+      },
+      "downloaded": true,
+      "total_bp": 4933726,
+      "n_contigs": 101
+    },
+    {
+      "genome_id": "562.99102",
+      "labels": {
+        "ampicillin": "S",
+        "ciprofloxacin": "S",
+        "gentamicin": "S"
+      },
+      "downloaded": true,
+      "total_bp": 5018942,
+      "n_contigs": 68
+    },
+    {
+      "genome_id": "562.99201",
+      "labels": {
+        "ampicillin": "R",
+        "ciprofloxacin": "S",
+        "gentamicin": "S"
+      },
+      "downloaded": true,
+      "total_bp": 5340288,
+      "n_contigs": 158
+    },
+    {
+      "genome_id": "562.45675",
+      "labels": {
+        "ampicillin": "R",
+        "ciprofloxacin": "R",
+        "gentamicin": "S"
+      },
+      "downloaded": true,
+      "total_bp": 4959102,
+      "n_contigs": 123
+    },
+    {
+      "genome_id": "562.97754",
+      "labels": {
+        "ampicillin": "S",
+        "ciprofloxacin": "S",
+        "gentamicin": "S"
+      },
+      "downloaded": true,
+      "total_bp": 4471537,
+      "n_contigs": 84
+    },
+    {
+      "genome_id": "562.97907",
+      "labels": {
+        "ampicillin": "R",
+        "ciprofloxacin": "S",
+        "gentamicin": "S"
+      },
+      "downloaded": true,
+      "total_bp": 5020720,
+      "n_contigs": 70
+    },
+    {
+      "genome_id": "562.98094",
+      "labels": {
+        "ampicillin": "S",
+        "ciprofloxacin": "S",
+        "gentamicin": "S"
+      },
+      "downloaded": true,
+      "total_bp": 4906593,
+      "n_contigs": 84
+    },
+    {
+      "genome_id": "562.98581",
+      "labels": {
+        "ampicillin": "S",
+        "ciprofloxacin": "S",
+        "gentamicin": "S"
+      },
+      "downloaded": true,
+      "total_bp": 5099522,
+      "n_contigs": 76
+    },
+    {
+      "genome_id": "562.100166",
+      "labels": {
+        "ampicillin": "S",
+        "ciprofloxacin": "S",
+        "gentamicin": "S"
+      },
+      "downloaded": true,
+      "total_bp": 5034624,
+      "n_contigs": 42
+    },
+    {
+      "genome_id": "562.98231",
+      "labels": {
+        "ampicillin": "S",
+        "ciprofloxacin": "S",
+        "gentamicin": "S"
+      },
+      "downloaded": true,
+      "total_bp": 4847608,
+      "n_contigs": 31
+    },
+    {
+      "genome_id": "562.100326",
+      "labels": {
+        "ampicillin": "S",
+        "ciprofloxacin": "S",
+        "gentamicin": "S"
+      },
+      "downloaded": true,
+      "total_bp": 5084773,
+      "n_contigs": 108
+    },
+    {
+      "genome_id": "562.99533",
+      "labels": {
+        "ampicillin": "S",
+        "ciprofloxacin": "S",
+        "gentamicin": "S"
+      },
+      "downloaded": true,
+      "total_bp": 5156318,
+      "n_contigs": 154
+    },
+    {
+      "genome_id": "562.100189",
+      "labels": {
+        "ampicillin": "R",
+        "ciprofloxacin": "S",
+        "gentamicin": "S"
+      },
+      "downloaded": true,
+      "total_bp": 5259700,
+      "n_contigs": 192
+    },
+    {
+      "genome_id": "562.7637",
+      "labels": {
+        "ampicillin": "R",
+        "ciprofloxacin": "S",
+        "gentamicin": "S"
+      },
+      "downloaded": true,
+      "total_bp": 5148303,
+      "n_contigs": 213
+    },
+    {
+      "genome_id": "562.7617",
+      "labels": {
+        "ampicillin": "R",
+        "ciprofloxacin": "S",
+        "gentamicin": "S"
+      },
+      "downloaded": true,
+      "total_bp": 5127015,
+      "n_contigs": 144
+    },
+    {
+      "genome_id": "562.98808",
+      "labels": {
+        "ampicillin": "R",
+        "ciprofloxacin": "S",
+        "gentamicin": "S"
+      },
+      "downloaded": true,
+      "total_bp": 5162582,
+      "n_contigs": 96
+    },
+    {
+      "genome_id": "562.7685",
+      "labels": {
+        "ampicillin": "S",
+        "ciprofloxacin": "S",
+        "gentamicin": "S"
+      },
+      "downloaded": true,
+      "total_bp": 5093020,
+      "n_contigs": 327
+    },
+    {
+      "genome_id": "562.98490",
+      "labels": {
+        "ampicillin": "S",
+        "ciprofloxacin": "S",
+        "gentamicin": "S"
+      },
+      "downloaded": true,
+      "total_bp": 5746287,
+      "n_contigs": 215
+    },
+    {
+      "genome_id": "562.100558",
+      "labels": {
+        "ampicillin": "R",
+        "ciprofloxacin": "S",
+        "gentamicin": "S"
+      },
+      "downloaded": true,
+      "total_bp": 5150018,
+      "n_contigs": 150
+    },
+    {
+      "genome_id": "562.98030",
+      "labels": {
+        "ampicillin": "S",
+        "ciprofloxacin": "S",
+        "gentamicin": "S"
+      },
+      "downloaded": true,
+      "total_bp": 5101897,
+      "n_contigs": 52
+    },
+    {
+      "genome_id": "562.145812",
+      "labels": {
+        "ampicillin": "S",
+        "ciprofloxacin": "S",
+        "gentamicin": "S"
+      },
+      "downloaded": true,
+      "total_bp": 4990937,
+      "n_contigs": 134
+    },
+    {
+      "genome_id": "562.100806",
+      "labels": {
+        "ampicillin": "S",
+        "ciprofloxacin": "S",
+        "gentamicin": "S"
+      },
+      "downloaded": true,
+      "total_bp": 4958950,
+      "n_contigs": 98
+    },
+    {
+      "genome_id": "562.100072",
+      "labels": {
+        "ampicillin": "S",
+        "ciprofloxacin": "S",
+        "gentamicin": "S"
+      },
+      "downloaded": true,
+      "total_bp": 5014080,
+      "n_contigs": 105
+    },
+    {
+      "genome_id": "562.7723",
+      "labels": {
+        "ampicillin": "R",
+        "ciprofloxacin": "S",
+        "gentamicin": "S"
+      },
+      "downloaded": true,
+      "total_bp": 4839962,
+      "n_contigs": 89
+    },
+    {
+      "genome_id": "562.100745",
+      "labels": {
+        "ampicillin": "S",
+        "ciprofloxacin": "S",
+        "gentamicin": "S"
+      },
+      "downloaded": true,
+      "total_bp": 4943274,
+      "n_contigs": 55
+    },
+    {
+      "genome_id": "562.100179",
+      "labels": {
+        "ampicillin": "R",
+        "ciprofloxacin": "S",
+        "gentamicin": "S"
+      },
+      "downloaded": true,
+      "total_bp": 5238806,
+      "n_contigs": 167
+    },
+    {
+      "genome_id": "562.99742",
+      "labels": {
+        "ampicillin": "R",
+        "ciprofloxacin": "R",
+        "gentamicin": "S"
+      },
+      "downloaded": true,
+      "total_bp": 4987304,
+      "n_contigs": 82
+    },
+    {
+      "genome_id": "562.99614",
+      "labels": {
+        "ampicillin": "S",
+        "ciprofloxacin": "S",
+        "gentamicin": "S"
+      },
+      "downloaded": true,
+      "total_bp": 5284190,
+      "n_contigs": 214
+    },
+    {
+      "genome_id": "562.100942",
+      "labels": {
+        "ampicillin": "S",
+        "ciprofloxacin": "S",
+        "gentamicin": "S"
+      },
+      "downloaded": true,
+      "total_bp": 5114698,
+      "n_contigs": 69
+    },
+    {
+      "genome_id": "562.99000",
+      "labels": {
+        "ampicillin": "R",
+        "ciprofloxacin": "S",
+        "gentamicin": "S"
+      },
+      "downloaded": true,
+      "total_bp": 5195458,
+      "n_contigs": 158
+    },
+    {
+      "genome_id": "562.140894",
+      "labels": {
+        "ampicillin": "R",
+        "ciprofloxacin": "R",
+        "gentamicin": "R"
+      },
+      "downloaded": true,
+      "total_bp": 5221226,
+      "n_contigs": 101
+    },
+    {
+      "genome_id": "562.97827",
+      "labels": {
+        "ampicillin": "S",
+        "ciprofloxacin": "S",
+        "gentamicin": "S"
+      },
+      "downloaded": true,
+      "total_bp": 4855811,
+      "n_contigs": 187
+    },
+    {
+      "genome_id": "562.144977",
+      "labels": {
+        "ampicillin": "S",
+        "ciprofloxacin": "S",
+        "gentamicin": "S"
+      },
+      "downloaded": true,
+      "total_bp": 5192173,
+      "n_contigs": 302
+    },
+    {
+      "genome_id": "562.97845",
+      "labels": {
+        "ampicillin": "S",
+        "ciprofloxacin": "S",
+        "gentamicin": "S"
+      },
+      "downloaded": true,
+      "total_bp": 5100496,
+      "n_contigs": 77
+    },
+    {
+      "genome_id": "562.57264",
+      "labels": {
+        "ampicillin": "R",
+        "ciprofloxacin": "S",
+        "gentamicin": "S"
+      },
+      "downloaded": true,
+      "total_bp": 5488131,
+      "n_contigs": 166
+    },
+    {
+      "genome_id": "562.65786",
+      "labels": {
+        "ampicillin": "R",
+        "ciprofloxacin": "R",
+        "gentamicin": "R"
+      },
+      "downloaded": true,
+      "total_bp": 4997862,
+      "n_contigs": 147
+    },
+    {
+      "genome_id": "562.100452",
+      "labels": {
+        "ampicillin": "S",
+        "ciprofloxacin": "S",
+        "gentamicin": "S"
+      },
+      "downloaded": true,
+      "total_bp": 5259728,
+      "n_contigs": 144
+    },
+    {
+      "genome_id": "562.98456",
+      "labels": {
+        "ampicillin": "R",
+        "ciprofloxacin": "S",
+        "gentamicin": "S"
+      },
+      "downloaded": true,
+      "total_bp": 5139098,
+      "n_contigs": 126
+    },
+    {
+      "genome_id": "562.99942",
+      "labels": {
+        "ampicillin": "S",
+        "ciprofloxacin": "S",
+        "gentamicin": "S"
+      },
+      "downloaded": true,
+      "total_bp": 4827198,
+      "n_contigs": 86
+    },
+    {
+      "genome_id": "562.23854",
+      "labels": {
+        "ampicillin": "R",
+        "ciprofloxacin": "S",
+        "gentamicin": "S"
+      },
+      "downloaded": true,
+      "total_bp": 5271664,
+      "n_contigs": 135
+    },
+    {
+      "genome_id": "562.145389",
+      "labels": {
+        "ampicillin": "R",
+        "ciprofloxacin": "S",
+        "gentamicin": "R"
+      },
+      "downloaded": true,
+      "total_bp": 5014951,
+      "n_contigs": 110
+    },
+    {
+      "genome_id": "562.22798",
+      "labels": {
+        "ampicillin": "S",
+        "ciprofloxacin": "S",
+        "gentamicin": "S"
+      },
+      "downloaded": true,
+      "total_bp": 5111275,
+      "n_contigs": 108
+    },
+    {
+      "genome_id": "562.98764",
+      "labels": {
+        "ampicillin": "S",
+        "ciprofloxacin": "S",
+        "gentamicin": "S"
+      },
+      "downloaded": true,
+      "total_bp": 5108433,
+      "n_contigs": 149
+    },
+    {
+      "genome_id": "562.7763",
+      "labels": {
+        "ampicillin": "S",
+        "ciprofloxacin": "S",
+        "gentamicin": "S"
+      },
+      "downloaded": false,
+      "total_bp": 3484958,
+      "n_contigs": 16
+    },
+    {
+      "genome_id": "562.42743",
+      "labels": {
+        "ampicillin": "R",
+        "ciprofloxacin": "S",
+        "gentamicin": "S"
+      },
+      "downloaded": true,
+      "total_bp": 4829569,
+      "n_contigs": 145
+    },
+    {
+      "genome_id": "562.98299",
+      "labels": {
+        "ampicillin": "S",
+        "ciprofloxacin": "S",
+        "gentamicin": "S"
+      },
+      "downloaded": true,
+      "total_bp": 4996910,
+      "n_contigs": 85
+    },
+    {
+      "genome_id": "562.22605",
+      "labels": {
+        "ampicillin": "R",
+        "ciprofloxacin": "S",
+        "gentamicin": "S"
+      },
+      "downloaded": true,
+      "total_bp": 5281385,
+      "n_contigs": 91
+    },
+    {
+      "genome_id": "562.99331",
+      "labels": {
+        "ampicillin": "S",
+        "ciprofloxacin": "S",
+        "gentamicin": "S"
+      },
+      "downloaded": true,
+      "total_bp": 4617593,
+      "n_contigs": 95
+    },
+    {
+      "genome_id": "562.100194",
+      "labels": {
+        "ampicillin": "S",
+        "ciprofloxacin": "S",
+        "gentamicin": "S"
+      },
+      "downloaded": true,
+      "total_bp": 5277949,
+      "n_contigs": 111
+    },
+    {
+      "genome_id": "562.98138",
+      "labels": {
+        "ampicillin": "S",
+        "ciprofloxacin": "S",
+        "gentamicin": "S"
+      },
+      "downloaded": true,
+      "total_bp": 5007918,
+      "n_contigs": 191
+    },
+    {
+      "genome_id": "562.22458",
+      "labels": {
+        "ampicillin": "S",
+        "ciprofloxacin": "S",
+        "gentamicin": "S"
+      },
+      "downloaded": true,
+      "total_bp": 4987674,
+      "n_contigs": 105
+    },
+    {
+      "genome_id": "562.100481",
+      "labels": {
+        "ampicillin": "S",
+        "ciprofloxacin": "S",
+        "gentamicin": "S"
+      },
+      "downloaded": true,
+      "total_bp": 4668123,
+      "n_contigs": 169
+    },
+    {
+      "genome_id": "562.7646",
+      "labels": {
+        "ampicillin": "S",
+        "ciprofloxacin": "S",
+        "gentamicin": "S"
+      },
+      "downloaded": true,
+      "total_bp": 5098885,
+      "n_contigs": 154
+    }
+  ],
+  "n_accepted": 149,
+  "class_balance": {
+    "ampicillin": {
+      "R": 72,
+      "S": 77
+    },
+    "ciprofloxacin": {
+      "S": 122,
+      "R": 27
+    },
+    "gentamicin": {
+      "S": 135,
+      "R": 14
+    }
+  }
+}
