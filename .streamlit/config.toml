@@ -1,0 +1,11 @@
+# Repo-root Streamlit config so the MAGI theme applies on Streamlit Community
+# Cloud (Cloud runs from the repo root). Kept in sync with
+# module3_decision_report/.streamlit/config.toml, which applies for local
+# `make -C module3_decision_report app` runs.
+[theme]
+base = "light"
+primaryColor = "#2F7553"
+backgroundColor = "#F4FAF5"
+secondaryBackgroundColor = "#EDF7EF"
+textColor = "#173126"
+font = "sans serif"
