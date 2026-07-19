@@ -3,16 +3,19 @@
 from __future__ import annotations
 
 import re
+import tomllib
+from pathlib import Path
 
 from streamlit.testing.v1 import AppTest
 
-from decision_report.app import render_probability
+from decision_report.app import VIEW_ANALYZE, inject_styles, render_navigation, render_probability
 from decision_report.config import DecisionConfig
 from decision_report.contracts import DecisionLabel, DrugDecision, EvidenceCategory, NoCallReason
 from decision_report.report import MANDATORY_DISCLAIMER
 
 
 APP_PATH = "src/decision_report/app.py"
+THEME_CONFIG_PATH = Path(".streamlit/config.toml")
 
 
 def _run_app() -> AppTest:
@@ -47,6 +50,80 @@ def test_mock_mode_is_labelled_as_demonstration_data():
     assert "not a real prediction" in text
 
 
+def test_theme_keeps_pastel_green_tokens_and_mobile_breakpoints(monkeypatch):
+    """The visual system and its small-screen behavior should not regress silently."""
+    rendered: list[str] = []
+    monkeypatch.setattr(
+        "decision_report.app.st.markdown",
+        lambda body, **kwargs: rendered.append(str(body)),
+    )
+
+    inject_styles()
+
+    stylesheet = "\n".join(rendered)
+    assert "--canvas: #f4faf5" in stylesheet
+    assert "--forest: #183e2b" in stylesheet
+    assert "@media (max-width: 900px)" in stylesheet
+    assert "@media (max-width: 640px)" in stylesheet
+    assert "@media (prefers-reduced-motion: reduce)" in stylesheet
+    assert ".stButton > button { width: 100%; }" in stylesheet
+    assert "color-scheme: light" in stylesheet
+    assert "-webkit-text-fill-color: var(--ink)" in stylesheet
+    assert ".stButton > button p" in stylesheet
+
+
+def test_streamlit_theme_is_pinned_to_light_pastel_green():
+    theme = tomllib.loads(THEME_CONFIG_PATH.read_text())["theme"]
+
+    assert theme == {
+        "base": "light",
+        "primaryColor": "#2F7553",
+        "backgroundColor": "#F4FAF5",
+        "secondaryBackgroundColor": "#EDF7EF",
+        "textColor": "#173126",
+        "font": "sans serif",
+    }
+
+
+def test_navigation_uses_the_streamlit_140_button_contract(monkeypatch):
+    """The declared Streamlit floor does not accept the newer ``width`` keyword."""
+
+    class FakeColumn:
+        def __enter__(self):
+            return self
+
+        def __exit__(self, *args):
+            return False
+
+    calls: list[bool] = []
+
+    def streamlit_140_button(
+        label,
+        *,
+        key=None,
+        help=None,
+        on_click=None,
+        args=None,
+        kwargs=None,
+        type="secondary",
+        disabled=False,
+        use_container_width=False,
+    ):
+        calls.append(use_container_width)
+        return False
+
+    monkeypatch.setattr("decision_report.app.st.session_state", {})
+    monkeypatch.setattr(
+        "decision_report.app.st.columns",
+        lambda count, gap=None: [FakeColumn() for _ in range(count)],
+    )
+    monkeypatch.setattr("decision_report.app.st.button", streamlit_140_button)
+
+    render_navigation(VIEW_ANALYZE)
+
+    assert calls == [True, True]
+
+
 def test_demonstration_banner_survives_generating_a_report():
     """The banner qualifies the cards, so it must persist once they render."""
     at = _select_case(_run_app(), "Known mechanism (resistant)")
@@ -69,7 +146,7 @@ def test_fail_and_work_glyphs_differ_in_form_not_only_orientation():
 def test_disclaimer_is_present_on_first_paint_and_has_no_dismiss_control():
     at = _run_app()
 
-    assert _all_text(at).count(MANDATORY_DISCLAIMER) >= 2
+    assert _all_text(at).count(MANDATORY_DISCLAIMER) == 1
     dismiss_words = re.compile(r"dismiss|close|hide|don't show again", re.IGNORECASE)
     assert not any(dismiss_words.search(item.label) for item in [*at.button, *at.checkbox])
 
@@ -79,6 +156,15 @@ def test_disclaimer_remains_after_loading_a_report():
     at = _click(at, "Generate clinical report")
 
     assert MANDATORY_DISCLAIMER in _all_text(at)
+    assert "Likely to fail" in _all_text(at)
+
+
+def test_generated_report_opens_without_repeating_analysis_controls():
+    at = _select_case(_run_app(), "Known mechanism (resistant)")
+    at = _click(at, "Generate clinical report")
+
+    assert "Clinical report" in [button.label for button in at.button]
+    assert not any(item.label == "Input method" for item in at.radio)
     assert "Likely to fail" in _all_text(at)
 
 
@@ -204,6 +290,7 @@ def test_empty_fasta_extraction_failure_shows_error_without_drug_cards():
 
 def test_evaluation_surfaces_no_call_rate_and_real_tables():
     at = _run_app()
+    at = _click(at, "Evaluation")
     at = _click(at, "Run mock evaluation")
 
     assert "No-call rate" in _all_text(at)

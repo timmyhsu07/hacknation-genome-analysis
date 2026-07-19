@@ -50,84 +50,492 @@ NO_CALL_LABELS = {
     NoCallReason.INVALID_INPUT: "invalid prediction input",
 }
 
+VIEW_ANALYZE = "analyze"
+VIEW_REPORT = "report"
+VIEW_EVALUATION = "evaluation"
+
 
 def inject_styles() -> None:
-    """Apply the restrained, paper-like visual system once per app run."""
+    """Apply the responsive pastel-green visual system once per app run."""
     st.markdown(
         """
         <style>
         :root {
-            --paper: #faf9f7;
-            --ink: #1a1a1a;
-            --muted-ink: #514f4b;
-            --rule: #cbc7c0;
-            --fail: #8a1f11;
-            --work: #1f6b3f;
-            --nocall: #4a3d7a;
-            --focus: #2456c9;
+            --canvas: #f4faf5;
+            --surface: #ffffff;
+            --surface-soft: #edf7ef;
+            --surface-strong: #dff0e3;
+            --mint: #cce8d3;
+            --sage: #7fa48a;
+            --forest: #183e2b;
+            --forest-soft: #2f674a;
+            --ink: #173126;
+            --muted-ink: #587064;
+            --rule: #cee2d3;
+            --rule-strong: #a9c9b2;
+            --fail: #a4493d;
+            --work: #2f7553;
+            --nocall: #6c5b89;
+            --focus: #267a54;
+            --shadow-sm: 0 8px 24px rgba(40, 91, 62, 0.07);
+            --shadow-md: 0 18px 48px rgba(40, 91, 62, 0.10);
         }
-        html, body, [class*="st-"] { font-size: 16px; }
-        .stApp { background: var(--paper); color: var(--ink); }
-        .stApp p, .stApp li, .stApp label { line-height: 1.5; }
-        .stApp small { font-size: 14px; }
-        :focus-visible { outline: 3px solid #2456c9; outline-offset: 2px; }
-        .block-container { padding-top: 2rem; padding-bottom: 3rem; }
-        .disclaimer-banner {
-            border: 2px solid #5c574f;
-            background: #f2efe9;
-            color: var(--ink);
-            padding: 16px 18px;
-            margin: 0 0 24px 0;
-            line-height: 1.55;
-            font-weight: 600;
+        html, body, [class*="st-"] {
+            font-family: "Avenir Next", "SF Pro Text", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
             font-size: 16px;
         }
+        html {
+            color-scheme: light;
+            scroll-behavior: smooth;
+        }
+        .stApp {
+            background:
+                radial-gradient(circle at 8% 4%, rgba(188, 229, 198, 0.44), transparent 29rem),
+                radial-gradient(circle at 92% 10%, rgba(223, 240, 227, 0.75), transparent 24rem),
+                var(--canvas);
+            color: var(--ink);
+        }
+        .stApp p, .stApp li, .stApp label { color: var(--ink); line-height: 1.6; }
+        .stApp small, .stCaption { color: var(--muted-ink); font-size: 0.875rem; }
+        .stApp h1, .stApp h2, .stApp h3 {
+            color: var(--forest);
+            letter-spacing: -0.025em;
+        }
+        :focus-visible {
+            outline: 3px solid var(--focus) !important;
+            outline-offset: 3px;
+            border-radius: 8px;
+        }
+        [data-testid="stHeader"] { background: transparent; }
+        [data-testid="stToolbar"] { right: 1rem; }
+        .block-container {
+            width: min(100%, 1240px);
+            padding: 1rem clamp(1rem, 3vw, 2.5rem) 3rem;
+        }
+        .hero-shell {
+            position: relative;
+            overflow: hidden;
+            border: 1px solid var(--rule);
+            border-radius: 24px;
+            background: linear-gradient(135deg, rgba(255,255,255,.96), rgba(225,243,229,.96));
+            box-shadow: var(--shadow-md);
+            padding: clamp(1.35rem, 3vw, 2.35rem);
+            margin-bottom: 1rem;
+        }
+        .hero-shell::after {
+            content: "";
+            position: absolute;
+            width: 220px;
+            height: 220px;
+            right: -65px;
+            top: -80px;
+            border: 38px solid rgba(105, 158, 119, .12);
+            border-radius: 50%;
+        }
+        .hero-eyebrow, .section-kicker, .sidebar-eyebrow {
+            color: var(--forest-soft);
+            font-size: .76rem;
+            font-weight: 800;
+            letter-spacing: .14em;
+            text-transform: uppercase;
+        }
+        .hero-title {
+            max-width: 820px;
+            color: var(--forest);
+            font-size: clamp(2.2rem, 5vw, 3.8rem);
+            line-height: 1;
+            letter-spacing: -.055em;
+            margin: .45rem 0 .7rem;
+        }
+        .hero-copy {
+            max-width: 720px;
+            color: var(--muted-ink);
+            font-size: clamp(1rem, 2vw, 1.16rem);
+            line-height: 1.65;
+            margin: 0;
+        }
+        .hero-pills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: .55rem;
+            margin-top: 1rem;
+        }
+        .hero-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: .4rem;
+            border: 1px solid var(--rule-strong);
+            border-radius: 999px;
+            background: rgba(255,255,255,.72);
+            color: var(--forest);
+            font-size: .82rem;
+            font-weight: 700;
+            padding: .48rem .75rem;
+        }
+        .hero-dot {
+            width: .52rem;
+            height: .52rem;
+            border-radius: 50%;
+            background: #5e9a70;
+            box-shadow: 0 0 0 4px rgba(94,154,112,.14);
+        }
+        .section-heading {
+            color: var(--forest);
+            font-size: clamp(1.65rem, 3vw, 2.35rem);
+            line-height: 1.15;
+            margin: .3rem 0 .65rem;
+        }
+        .page-masthead {
+            display: flex;
+            align-items: end;
+            justify-content: space-between;
+            gap: 1rem;
+            border-bottom: 1px solid var(--rule);
+            padding: .35rem 0 1rem;
+            margin-bottom: 1rem;
+        }
+        .page-masthead h1 {
+            font-size: clamp(1.8rem, 4vw, 2.7rem);
+            line-height: 1.05;
+            margin: .2rem 0 0;
+        }
+        .page-masthead p {
+            max-width: 520px;
+            color: var(--muted-ink);
+            font-size: .9rem;
+            margin: 0;
+        }
+        .disclaimer-banner {
+            display: flex;
+            align-items: flex-start;
+            gap: .8rem;
+            border: 1px solid #b9d5bf;
+            border-radius: 16px;
+            background: rgba(234, 246, 236, .94);
+            color: var(--ink);
+            box-shadow: var(--shadow-sm);
+            padding: .9rem 1rem;
+            margin: 0 0 1.3rem;
+            line-height: 1.55;
+            font-weight: 650;
+            font-size: .92rem;
+        }
+        .disclaimer-icon {
+            display: grid;
+            place-items: center;
+            flex: 0 0 2rem;
+            width: 2rem;
+            height: 2rem;
+            border-radius: 10px;
+            background: var(--mint);
+            color: var(--forest);
+            font-size: 1rem;
+        }
         .verdict-badge, .evidence-chip {
-            display: inline-block;
+            display: inline-flex;
+            align-items: center;
+            gap: .35rem;
             color: #ffffff;
-            border-radius: 4px;
+            border-radius: 999px;
             font-weight: 700;
             line-height: 1.4;
         }
-        .verdict-badge { padding: 9px 13px; margin: 2px 0 12px 0; font-size: 16px; }
-        .evidence-chip { padding: 5px 9px; margin: 6px 0 12px 0; font-size: 14px; background: #55524e; }
-        .probability-panel {
-            border-left: 4px solid #77716a;
-            padding: 10px 12px;
-            margin: 8px 0 16px 0;
-            background: #f4f1ec;
+        .verdict-badge {
+            padding: .55rem .82rem;
+            margin: .1rem 0 .85rem;
+            font-size: .88rem;
+            box-shadow: 0 5px 14px rgba(25,62,43,.12);
         }
-        .probability-panel.muted { opacity: 0.78; }
-        .prob-track { position: relative; height: 18px; background: #dedad3; margin: 10px 0 8px 0; }
-        .prob-band { position: absolute; top: 0; bottom: 0; background: #b9b2cf; opacity: .8; }
-        .prob-marker { position: absolute; top: -4px; width: 4px; height: 26px; background: #171717; }
+        .evidence-chip {
+            padding: .42rem .7rem;
+            margin: .35rem 0 .85rem;
+            font-size: .78rem;
+            background: var(--forest-soft);
+        }
+        .drug-heading {
+            font-size: 1.3rem;
+            margin: 0 0 .55rem;
+        }
+        .probability-panel {
+            border: 1px solid var(--rule);
+            border-radius: 14px;
+            padding: .85rem;
+            margin: .5rem 0 1rem;
+            background: var(--surface-soft);
+            font-size: .9rem;
+        }
+        .probability-panel.muted { background: #f2f0f7; border-color: #d9d2e5; }
+        .prob-track {
+            position: relative;
+            height: 12px;
+            overflow: visible;
+            border-radius: 999px;
+            background: #cfe3d4;
+            margin: .85rem 0 .7rem;
+        }
+        .prob-band {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            background: #b9aece;
+            opacity: .86;
+        }
+        .prob-marker {
+            position: absolute;
+            top: -4px;
+            width: 4px;
+            height: 20px;
+            border-radius: 99px;
+            background: var(--forest);
+            box-shadow: 0 0 0 3px rgba(255,255,255,.8);
+        }
         .mono, code, [data-testid="stDataFrame"] { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
-        .feature-list { margin: 12px 0; }
+        code {
+            border-radius: 6px;
+            background: var(--surface-strong);
+            color: var(--forest);
+            padding: .12rem .3rem;
+        }
+        .feature-list { margin: .75rem 0; }
         .feature-row {
             display: grid;
             grid-template-columns: minmax(120px, 1.1fr) 1fr 2px 1fr minmax(145px, 1.2fr);
-            gap: 8px;
+            gap: .55rem;
             align-items: center;
-            margin: 10px 0;
-            min-height: 26px;
+            border-bottom: 1px solid var(--rule);
+            padding: .6rem 0;
+            min-height: 2rem;
+            font-size: .85rem;
         }
-        .zero-line { width: 2px; height: 26px; background: #34312d; }
-        .feature-bar { height: 14px; min-width: 3px; background: #4a3d7a; }
+        .feature-row:last-child { border-bottom: 0; }
+        .zero-line { width: 2px; height: 1.65rem; background: var(--sage); }
+        .feature-bar { height: .75rem; min-width: 3px; border-radius: 99px; background: var(--forest-soft); }
         .feature-left { margin-left: auto; }
-        .feature-direction { color: #34312d; }
-        .importance-note { border-left: 3px solid #857f77; padding: 8px 12px; margin: 12px 0; }
-        .mode-banner {
-            padding: 12px 16px; margin: 0 0 20px 0; font-size: 16px;
-            line-height: 1.55; border-left: 6px solid;
+        .feature-direction { color: var(--muted-ink); }
+        .importance-note {
+            border: 1px solid var(--rule);
+            border-radius: 12px;
+            background: var(--surface-soft);
+            color: var(--muted-ink);
+            padding: .75rem .85rem;
+            margin: .8rem 0;
+            font-size: .86rem;
         }
-        .mode-mock { background: #f6efe0; border-left-color: #8a6116; color: #1a1a1a; }
-        .mode-real { background: #e9eff6; border-left-color: #1f3d5c; color: #1a1a1a; }
-        div[data-testid="stVerticalBlockBorderWrapper"] { margin-bottom: 24px; border-color: var(--rule); }
-        div[data-testid="stExpander"] { margin-top: 8px; }
-        @media (max-width: 700px) {
-            .feature-row { grid-template-columns: 1fr; border-bottom: 1px solid var(--rule); padding-bottom: 10px; }
+        .mode-banner {
+            border: 1px solid;
+            border-radius: 16px;
+            padding: .9rem 1rem;
+            margin: 0 0 1.1rem;
+            font-size: .91rem;
+            line-height: 1.55;
+        }
+        .mode-mock { background: #fff8e9; border-color: #ead6a6; color: #5e4a1f; }
+        .mode-real { background: #e8f5eb; border-color: #add1b7; color: var(--forest); }
+        .report-identity, .coverage-panel {
+            border: 1px solid var(--rule);
+            border-radius: 16px;
+            background: rgba(255,255,255,.76);
+            box-shadow: var(--shadow-sm);
+            padding: 1rem 1.1rem;
+            margin: .65rem 0 1rem;
+        }
+        .report-identity {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem 2.5rem;
+        }
+        .meta-label {
+            display: block;
+            color: var(--muted-ink);
+            font-size: .7rem;
+            font-weight: 800;
+            letter-spacing: .11em;
+            text-transform: uppercase;
+            margin-bottom: .2rem;
+        }
+        .meta-value { color: var(--forest); font-size: .95rem; font-weight: 700; }
+        .coverage-panel strong { color: var(--forest); }
+
+        /* Streamlit primitives */
+        section[data-testid="stSidebar"] {
+            border-right: 1px solid var(--rule);
+            background: rgba(235, 247, 238, .96);
+        }
+        section[data-testid="stSidebar"] > div { padding-top: .8rem; }
+        section[data-testid="stSidebar"] [data-testid="stVerticalBlock"] { gap: .55rem; }
+        section[data-testid="stSidebar"] hr { margin: .35rem 0; }
+        section[data-testid="stSidebar"] [data-testid="stMarkdownContainer"] p { color: var(--muted-ink); }
+        .sidebar-brand {
+            color: var(--forest);
+            font-size: 1.2rem;
+            font-weight: 800;
+            letter-spacing: -.02em;
+            margin: .15rem 0 .65rem;
+        }
+        .sidebar-panel {
+            border: 1px solid var(--rule);
+            border-radius: 14px;
+            background: rgba(255,255,255,.72);
+            padding: .75rem .8rem;
+            margin: .2rem 0;
+        }
+        .sidebar-panel + .sidebar-panel { margin-top: .55rem; }
+        .sidebar-value {
+            display: block;
+            color: var(--muted-ink);
+            font-size: .84rem;
+            line-height: 1.45;
+            margin-top: .18rem;
+        }
+        main div[data-testid="stVerticalBlockBorderWrapper"] {
+            border-color: var(--rule);
+            border-radius: 20px;
+            background: rgba(255,255,255,.88);
+            box-shadow: var(--shadow-sm);
+            margin-bottom: 1rem;
+            overflow: hidden;
+        }
+        div[data-testid="stExpander"] {
+            border-color: var(--rule);
+            border-radius: 12px;
+            background: var(--surface);
+            margin-top: .5rem;
+            overflow: hidden;
+        }
+        div[data-testid="stAlert"] { border-radius: 14px; }
+        [data-testid="stDataFrame"] {
+            max-width: 100%;
+            overflow-x: auto;
+            border: 1px solid var(--rule);
+            border-radius: 14px;
+        }
+        .stButton > button {
+            min-height: 2.9rem;
+            border-radius: 12px;
+            border-color: var(--rule-strong);
+            background: rgba(255,255,255,.92);
+            color: var(--forest) !important;
+            font-weight: 750;
+            transition: transform .16s ease, box-shadow .16s ease, background .16s ease;
+        }
+        .stButton > button p,
+        .stButton > button span {
+            color: inherit !important;
+        }
+        .stButton > button:hover {
+            border-color: var(--forest-soft);
+            background: var(--surface-strong);
+            color: var(--forest);
+            transform: translateY(-1px);
+            box-shadow: var(--shadow-sm);
+        }
+        .stButton > button[kind="primary"] {
+            border-color: var(--forest-soft);
+            background: var(--forest-soft);
+            color: #ffffff;
+        }
+        .stButton > button[kind="primary"]:hover {
+            background: var(--forest);
+            color: #ffffff;
+        }
+        .stButton > button:disabled {
+            border-color: var(--rule);
+            background: #e7f0e9;
+            color: #718278 !important;
+            opacity: 1;
+        }
+        div[data-baseweb="select"] > div,
+        div[data-baseweb="input"] > div,
+        div[data-baseweb="base-input"],
+        [data-testid="stFileUploaderDropzone"] {
+            border-color: var(--rule-strong) !important;
+            border-radius: 12px !important;
+            background: rgba(255,255,255,.88) !important;
+            color: var(--ink) !important;
+        }
+        [data-testid="stTextInput"] input,
+        [data-testid="stNumberInput"] input,
+        [data-testid="stTextArea"] textarea,
+        [data-baseweb="select"] [role="combobox"] {
+            background: transparent !important;
+            color: var(--ink) !important;
+            caret-color: var(--forest);
+            -webkit-text-fill-color: var(--ink) !important;
+        }
+        [data-testid="stTextInput"] input::placeholder,
+        [data-testid="stNumberInput"] input::placeholder,
+        [data-testid="stTextArea"] textarea::placeholder {
+            color: #789083 !important;
+            opacity: 1;
+            -webkit-text-fill-color: #789083 !important;
+        }
+        [data-baseweb="select"] svg {
+            fill: var(--forest) !important;
+        }
+        [data-baseweb="popover"],
+        [role="listbox"],
+        [role="option"] {
+            background: var(--surface) !important;
+            color: var(--ink) !important;
+        }
+        [role="option"]:hover,
+        [role="option"][aria-selected="true"] {
+            background: var(--surface-strong) !important;
+            color: var(--forest) !important;
+        }
+        [data-testid="stRadio"] label,
+        [data-testid="stRadio"] label p {
+            color: var(--ink) !important;
+        }
+        [data-testid="stFileUploaderDropzone"] *,
+        [data-testid="stFileUploaderDropzone"] button {
+            color: var(--forest) !important;
+        }
+        div[role="radiogroup"] { gap: .45rem; }
+        div[role="radiogroup"] label {
+            border-radius: 10px;
+            padding: .35rem .5rem;
+        }
+
+        @media (max-width: 900px) {
+            .block-container { padding-top: .7rem; }
+            .hero-shell { border-radius: 22px; }
+            [data-testid="stHorizontalBlock"] { flex-wrap: wrap; }
+            [data-testid="column"] {
+                flex: 1 1 min(100%, 25rem) !important;
+                width: min(100%, 25rem) !important;
+                min-width: 0 !important;
+            }
+        }
+        @media (max-width: 640px) {
+            html, body, [class*="st-"] { font-size: 15px; }
+            .block-container { padding: .75rem .8rem 2.5rem; }
+            .hero-shell { padding: 1.15rem 1rem; margin-bottom: .8rem; }
+            .hero-title { font-size: clamp(2.15rem, 13vw, 3rem); }
+            .hero-copy { font-size: .95rem; }
+            .hero-pill { font-size: .75rem; }
+            .page-masthead { display: block; }
+            .page-masthead p { margin-top: .55rem; }
+            .disclaimer-banner { padding: .8rem; font-size: .84rem; }
+            .disclaimer-icon { flex-basis: 1.75rem; width: 1.75rem; height: 1.75rem; }
+            .mode-banner { font-size: .86rem; }
+            .report-identity { display: grid; gap: .75rem; }
+            .feature-row { grid-template-columns: 1fr; gap: .25rem; }
             .zero-line { display: none; }
+            .feature-row > div:nth-child(2),
+            .feature-row > div:nth-child(4) { display: none; }
             .feature-left { margin-left: 0; }
+            .stButton > button { width: 100%; }
+            button[data-baseweb="tab"] { padding-inline: .65rem; font-size: .87rem; }
+            [data-testid="stFileUploaderDropzone"] { padding: .75rem !important; }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            html { scroll-behavior: auto; }
+            *, *::before, *::after {
+                animation-duration: .01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: .01ms !important;
+            }
         }
         </style>
         """,
@@ -138,9 +546,73 @@ def inject_styles() -> None:
 def render_disclaimer() -> None:
     """Render the mandatory, non-dismissible disclaimer at body-text size."""
     st.markdown(
-        f'<div class="disclaimer-banner" role="note">{html.escape(MANDATORY_DISCLAIMER)}</div>',
+        '<div class="disclaimer-banner" role="note">'
+        '<span class="disclaimer-icon" aria-hidden="true">✦</span>'
+        f"<span>{html.escape(MANDATORY_DISCLAIMER)}</span>"
+        "</div>",
         unsafe_allow_html=True,
     )
+
+
+def render_hero() -> None:
+    """Render the product identity and scope without relying on Streamlit's title."""
+    st.markdown(
+        """
+        <header class="hero-shell">
+          <div class="hero-eyebrow">HackNation 2026 · Antimicrobial resistance intelligence</div>
+          <h1 class="hero-title">Genome<br>Firewall</h1>
+          <p class="hero-copy">
+            Evidence-aware antibiotic resistance screening from assembled bacterial genomes.
+            Every result separates known mechanisms, statistical signals, and honest no-calls.
+          </p>
+          <div class="hero-pills" aria-label="Pipeline qualities">
+            <span class="hero-pill"><span class="hero-dot"></span>Read-only analysis</span>
+            <span class="hero-pill"><span class="hero-dot"></span>Auditable evidence</span>
+            <span class="hero-pill"><span class="hero-dot"></span>Laboratory confirmation required</span>
+          </div>
+        </header>
+        """,
+        unsafe_allow_html=True,
+    )
+
+
+def render_page_masthead(title: str, eyebrow: str, description: str) -> None:
+    """Render a compact header for focused secondary views."""
+    st.markdown(
+        '<header class="page-masthead">'
+        f'<div><div class="section-kicker">{html.escape(eyebrow)}</div>'
+        f"<h1>{html.escape(title)}</h1></div>"
+        f"<p>{html.escape(description)}</p>"
+        "</header>",
+        unsafe_allow_html=True,
+    )
+
+
+def _open_view(view: str) -> None:
+    st.session_state["active_view"] = view
+    st.rerun()
+
+
+def render_navigation(active_view: str) -> None:
+    """Render page-level navigation without keeping every page mounted."""
+    has_report = st.session_state.get("clinical_report") is not None
+    labels = [
+        ("Analyze", VIEW_ANALYZE),
+        ("Evaluation", VIEW_EVALUATION),
+    ]
+    if has_report:
+        labels.append(("Clinical report", VIEW_REPORT))
+
+    columns = st.columns(len(labels), gap="small")
+    for column, (label, view) in zip(columns, labels):
+        with column:
+            if st.button(
+                label,
+                key=f"navigate-{view}",
+                type="primary" if active_view == view else "secondary",
+                use_container_width=True,
+            ):
+                _open_view(view)
 
 
 def _finite_number(value: Any) -> bool:
@@ -186,16 +658,16 @@ def render_mode_banner(source: str) -> None:
 
 def _verdict(decision: DrugDecision) -> tuple[str, str, str]:
     if decision.label is DecisionLabel.LIKELY_TO_FAIL and decision.intrinsic_resistance:
-        return "■", "Likely to fail — no molecular target (deterministic)", "#8a1f11"
+        return "■", "Likely to fail — no molecular target (deterministic)", "var(--fail)"
     if decision.label is DecisionLabel.LIKELY_TO_FAIL:
-        return "▲", "Likely to fail", "#8a1f11"
+        return "▲", "Likely to fail", "var(--fail)"
     if decision.label is DecisionLabel.LIKELY_TO_WORK:
         # A check, not a down-triangle: an up/down triangle pair differs only by
         # orientation, and mistaking "likely to fail" for "likely to work" is the
         # worst error this UI can produce. All four glyphs differ in FORM.
-        return "✓", "Likely to work", "#1f6b3f"
+        return "✓", "Likely to work", "var(--work)"
     reason = NO_CALL_LABELS.get(decision.no_call_reason, "reason unavailable — see rationale below")
-    return "●", f"No-call — insufficient evidence: {reason}", "#4a3d7a"
+    return "●", f"No-call — insufficient evidence: {reason}", "var(--nocall)"
 
 
 def _probability_frame(probability: float, config: DecisionConfig) -> str:
@@ -306,7 +778,10 @@ def render_evidence_detail(decision: DrugDecision, config: DecisionConfig) -> No
 def render_drug_card(decision: DrugDecision, config: DecisionConfig) -> None:
     """Render one full-size card without reinterpreting the decision."""
     with st.container(border=True):
-        st.markdown(f"### {html.escape(decision.drug)}")
+        st.markdown(
+            f'<h3 class="drug-heading">{html.escape(decision.drug)}</h3>',
+            unsafe_allow_html=True,
+        )
         shape, verdict_text, color = _verdict(decision)
         st.markdown(
             f'<div class="verdict-badge" style="background:{color}">{shape} {html.escape(verdict_text)}</div>',
@@ -336,13 +811,20 @@ def render_drug_card(decision: DrugDecision, config: DecisionConfig) -> None:
 
 
 def render_coverage(report: GenomeReport) -> None:
-    st.markdown("**Coverage recap**")
     covered = ", ".join(report.covered_drugs) if report.covered_drugs else "No covered drugs reported"
-    st.write(f"Covered by the active predictor: {covered}.")
-    if report.uncovered_drugs_requested:
-        st.write("Requested but not covered: " + ", ".join(report.uncovered_drugs_requested) + ".")
-    else:
-        st.write("No requested drugs fell outside predictor coverage.")
+    uncovered = (
+        "Requested but not covered: " + ", ".join(report.uncovered_drugs_requested) + "."
+        if report.uncovered_drugs_requested
+        else "No requested drugs fell outside predictor coverage."
+    )
+    st.markdown(
+        '<div class="coverage-panel">'
+        "<strong>Coverage recap</strong><br>"
+        f"Covered by the active predictor: {html.escape(covered)}.<br>"
+        f"{html.escape(uncovered)}"
+        "</div>",
+        unsafe_allow_html=True,
+    )
 
 
 def render_report(report: GenomeReport, config: DecisionConfig) -> None:
@@ -363,10 +845,22 @@ def render_report(report: GenomeReport, config: DecisionConfig) -> None:
             st.warning(message)
 
     st.markdown(
-        f"**Genome:** `{html.escape(report.genome_id)}`  \n**Species:** {html.escape(report.species)}"
+        '<div class="report-identity">'
+        '<div><span class="meta-label">Genome</span>'
+        f'<span class="meta-value mono">{html.escape(report.genome_id)}</span></div>'
+        '<div><span class="meta-label">Species</span>'
+        f'<span class="meta-value">{html.escape(report.species)}</span></div>'
+        '<div><span class="meta-label">Decision cards</span>'
+        f'<span class="meta-value">{len(report.decisions)}</span></div>'
+        "</div>",
+        unsafe_allow_html=True,
     )
-    for decision in report.decisions:
-        render_drug_card(decision, config)
+    for start in range(0, len(report.decisions), 2):
+        row = report.decisions[start : start + 2]
+        columns = st.columns(2, gap="large")
+        for column, decision in zip(columns, row):
+            with column:
+                render_drug_card(decision, config)
     render_coverage(report)
 
 
@@ -397,13 +891,19 @@ def _demo_defaults() -> dict[str, str]:
 
 
 def _sidebar() -> tuple[str, Any, Any, DecisionConfig, str]:
-    """Render controls and return source, predictor, extractor, config, species."""
+    """Render the compact analysis controls and resolve the active pipeline."""
+    st.sidebar.markdown(
+        '<div class="sidebar-eyebrow">Analysis workspace</div>'
+        '<div class="sidebar-brand">Genome Firewall</div>',
+        unsafe_allow_html=True,
+    )
     st.sidebar.markdown("**Data source**")
     source = st.sidebar.radio("Pipeline", ["Mock (demo)", "Real pipeline"], index=0)
     previous_source = st.session_state.get("active_source")
     if previous_source is not None and previous_source != source:
         st.session_state.pop("clinical_report", None)
         st.session_state.pop("clinical_config", None)
+        st.session_state["active_view"] = VIEW_ANALYZE
     st.session_state["active_source"] = source
     base_config = DecisionConfig()
     predictor: Any = None
@@ -414,7 +914,6 @@ def _sidebar() -> tuple[str, Any, Any, DecisionConfig, str]:
         predictor = MockPredictor()
         extractor = MockFeatureExtractor()
     else:
-        st.sidebar.write("Real mode reads existing Module 1 and Module 2 artifacts.")
         defaults = _demo_defaults()
         demo_ready = (
             Path(defaults["module1_output_dir"]).exists()
@@ -422,13 +921,14 @@ def _sidebar() -> tuple[str, Any, Any, DecisionConfig, str]:
             and Path(defaults["models_dir"]).exists()
         )
         if demo_ready:
-            st.sidebar.caption("Demo artifacts detected -- fields pre-filled. Pick a genome in the Clinical Report tab; no paths to type.")
+            st.sidebar.caption("Bundled artifacts detected and ready.")
         else:
-            st.sidebar.caption("Demo artifacts not found. Run scripts/fetch_bvbrc_ecoli.py + Module 1 + Module 2 (see README), or edit the paths below.")
-        models_dir = st.sidebar.text_input("Models directory", value=defaults["models_dir"])
-        target_gene_table = st.sidebar.text_input("Target gene table (CSV path)", value=defaults["target_gene_table"])
-        module1_output_dir = st.sidebar.text_input("Module 1 output directory", value=defaults["module1_output_dir"])
-        species = st.sidebar.text_input("Species", value=defaults["species"])
+            st.sidebar.caption("Bundled artifacts were not found. Configure paths below.")
+        with st.sidebar.expander("Artifact paths", expanded=not demo_ready):
+            models_dir = st.text_input("Models directory", value=defaults["models_dir"])
+            target_gene_table = st.text_input("Target gene table (CSV path)", value=defaults["target_gene_table"])
+            module1_output_dir = st.text_input("Module 1 output directory", value=defaults["module1_output_dir"])
+            species = st.text_input("Species", value=defaults["species"])
         if models_dir and target_gene_table and module1_output_dir and species:
             try:
                 predictor = ModelPredictor(models_dir, target_gene_table, species)
@@ -442,33 +942,45 @@ def _sidebar() -> tuple[str, Any, Any, DecisionConfig, str]:
 
     covered_species = predictor.covered_species() if predictor is not None else []
     covered_drugs = predictor.covered_drugs() if predictor is not None else []
-    requested = st.sidebar.text_input(
-        "Additional requested drugs (comma-separated)",
-        help="Optional. Uncovered names render as first-class no-call cards.",
-    )
+    with st.sidebar.expander("Optional drug coverage"):
+        requested = st.text_input(
+            "Additional requested drugs (comma-separated)",
+            help="Uncovered names render as first-class no-call cards.",
+        )
     additions = _text_from_sequence(requested.split(","))
     drugs_of_interest = tuple(dict.fromkeys([*covered_drugs, *additions])) if additions else ()
     config = replace(
         base_config,
         covered_species=tuple(covered_species) if covered_species else base_config.covered_species,
         drugs_of_interest=drugs_of_interest,
-        ood_threshold=(predictor.ood_threshold() if source == "Real pipeline" and predictor is not None else base_config.ood_threshold),
+        ood_threshold=(
+            predictor.ood_threshold()
+            if source == "Real pipeline" and predictor is not None
+            else base_config.ood_threshold
+        ),
     )
 
-    st.sidebar.markdown("**Live predictor coverage**")
-    st.sidebar.write("Species: " + (", ".join(covered_species) if covered_species else "Unavailable"))
-    st.sidebar.write("Drugs: " + (", ".join(covered_drugs) if covered_drugs else "Unavailable"))
-    st.sidebar.markdown("**Decision configuration provenance**")
-    st.sidebar.write(config.tuned_on)
+    species_text = ", ".join(covered_species) if covered_species else "Unavailable"
+    drugs_text = ", ".join(covered_drugs) if covered_drugs else "Unavailable"
     st.sidebar.markdown(
-        "Uncertainty band: "
-        f'<span class="mono">[{config.uncertainty_band_low:.2f}, {config.uncertainty_band_high:.2f}]</span>',
+        '<div class="sidebar-panel">'
+        '<span class="sidebar-eyebrow">Live coverage</span>'
+        f'<span class="sidebar-value"><strong>Species:</strong> {html.escape(species_text)}</span>'
+        f'<span class="sidebar-value"><strong>Drugs:</strong> {html.escape(drugs_text)}</span>'
+        "</div>",
         unsafe_allow_html=True,
     )
-    st.sidebar.markdown(
-        f'OOD threshold: <span class="mono">{config.ood_threshold:.2f}</span>',
-        unsafe_allow_html=True,
-    )
+    with st.sidebar.expander("Decision configuration"):
+        st.caption(config.tuned_on)
+        st.markdown(
+            "Uncertainty band: "
+            f'<span class="mono">[{config.uncertainty_band_low:.2f}, {config.uncertainty_band_high:.2f}]</span>',
+            unsafe_allow_html=True,
+        )
+        st.markdown(
+            f'OOD threshold: <span class="mono">{config.ood_threshold:.2f}</span>',
+            unsafe_allow_html=True,
+        )
     return source, predictor, extractor, config, species
 
 
@@ -485,43 +997,70 @@ def _run_uploaded_mock(upload: Any, predictor: Any, extractor: Any, config: Deci
             os.unlink(temp_path)
 
 
-def render_clinical_tab(source: str, predictor: Any, extractor: Any, config: DecisionConfig, species: str) -> None:
-    st.markdown("## Clinical Report")
+def _save_report_and_open(
+    report: GenomeReport,
+    config: DecisionConfig,
+    source: str,
+) -> None:
+    st.session_state["clinical_report"] = report
+    st.session_state["clinical_config"] = config
+    st.session_state["report_source"] = source
+    _open_view(VIEW_REPORT)
+
+
+def render_analysis_page(
+    source: str,
+    predictor: Any,
+    extractor: Any,
+    config: DecisionConfig,
+    species: str,
+) -> None:
+    """Collect one genome input; successful generation navigates to the report page."""
+    st.markdown(
+        '<div class="section-kicker">Individual genome</div>'
+        '<h2 class="section-heading">Analyze a genome</h2>',
+        unsafe_allow_html=True,
+    )
     render_mode_banner(source)
-    report: GenomeReport | None = st.session_state.get("clinical_report")
-    report_config: DecisionConfig = st.session_state.get("clinical_config", config)
 
     if source == "Mock (demo)":
         input_mode = st.radio("Input method", ["Demo case", "Upload FASTA"], horizontal=True)
         cases = demo_cases()
         selected_name = st.selectbox("Demo case", [case.name for case in cases])
         selected_case = next(case for case in cases if case.name == selected_name)
-        st.write(selected_case.description)
+        st.caption(selected_case.description)
         selected_species = st.text_input("Report species", value=selected_case.species)
         upload = None
         if input_mode == "Upload FASTA":
             upload = st.file_uploader("FASTA file", type=["fasta", "fa", "fna", "fas"])
 
-        if st.button("Generate clinical report", type="primary"):
+        if st.button("Generate clinical report", type="primary", use_container_width=True):
             try:
                 with st.spinner("Running the decision pipeline over this genome..."):
                     if input_mode == "Demo case":
                         scripted = scripted_predictor_for(cases)
-                        report = build_report(selected_case.features, scripted, config, selected_species)
+                        generated_report = build_report(
+                            selected_case.features,
+                            scripted,
+                            config,
+                            selected_species,
+                        )
                     elif upload is not None:
-                        report = _run_uploaded_mock(upload, predictor, extractor, config, selected_species)
+                        generated_report = _run_uploaded_mock(
+                            upload,
+                            predictor,
+                            extractor,
+                            config,
+                            selected_species,
+                        )
                     else:
-                        report = None
-                        st.session_state.pop("clinical_report", None)
                         st.error("Choose a FASTA file before generating a report.")
-                st.session_state["clinical_report"] = report
-                st.session_state["clinical_config"] = config
+                        return
+                _save_report_and_open(generated_report, config, source)
             except (DecisionReportError, IntegrationError) as exc:
-                report = None
                 st.session_state.pop("clinical_report", None)
                 st.error(f"Decision pipeline unavailable: {exc}")
             except Exception as exc:
-                report = None
                 st.session_state.pop("clinical_report", None)
                 st.error(f"The decision pipeline could not complete: {exc}")
     else:
@@ -529,7 +1068,7 @@ def render_clinical_tab(source: str, predictor: Any, extractor: Any, config: Dec
         if extractor is not None and hasattr(extractor, "genome_ids"):
             try:
                 store_ids = extractor.genome_ids()
-            except Exception:  # never let a store hiccup blank the tab
+            except Exception:  # never let a store hiccup blank the page
                 store_ids = []
         if store_ids:
             st.write("Pick a genome present in the configured Module 1 feature store.")
@@ -537,40 +1076,56 @@ def render_clinical_tab(source: str, predictor: Any, extractor: Any, config: Dec
         else:
             st.write("Enter an identifier already present in the configured Module 1 feature store.")
             identifier = st.text_input("Genome ID or original FASTA filename")
-        if st.button("Generate clinical report", type="primary"):
+        if st.button("Generate clinical report", type="primary", use_container_width=True):
             if predictor is None or extractor is None:
-                report = None
                 st.session_state.pop("clinical_report", None)
                 st.error("Real pipeline is not available. Check the sidebar artifact paths.")
             elif not identifier.strip():
-                report = None
                 st.session_state.pop("clinical_report", None)
                 st.error("Enter a genome ID or FASTA filename before generating a report.")
             else:
                 try:
                     with st.spinner("Running the decision pipeline over this genome..."):
                         features = extractor(identifier.strip())
-                        report = build_report(features, predictor, config, species)
-                    st.session_state["clinical_report"] = report
-                    st.session_state["clinical_config"] = config
+                        generated_report = build_report(features, predictor, config, species)
+                    _save_report_and_open(generated_report, config, source)
                 except (DecisionReportError, IntegrationError) as exc:
-                    report = None
                     st.session_state.pop("clinical_report", None)
                     st.error(f"Decision pipeline unavailable: {exc}")
                 except Exception as exc:
-                    report = None
                     st.session_state.pop("clinical_report", None)
                     st.error(f"The decision pipeline could not complete: {exc}")
 
-    if report is None:
-        st.info("Choose a demo case or provide an input, then generate a report. No-call outcomes are expected when evidence is insufficient.")
-        if predictor is not None:
-            st.write("Covered species: " + ", ".join(predictor.covered_species()) + ".")
-            st.write("Covered drugs: " + ", ".join(predictor.covered_drugs()) + ".")
-    else:
-        render_report(report, report_config)
+    st.info(
+        "Choose a demo case or provide an input, then generate a report. "
+        "The finished report opens on its own page."
+    )
+    if predictor is not None:
+        st.caption(
+            "Active coverage: "
+            + ", ".join(predictor.covered_species())
+            + " · "
+            + ", ".join(predictor.covered_drugs())
+        )
 
-    render_disclaimer()
+
+def render_report_page() -> None:
+    """Render only the saved report, without repeating the input workspace."""
+    report: GenomeReport | None = st.session_state.get("clinical_report")
+    config: DecisionConfig | None = st.session_state.get("clinical_config")
+    source = st.session_state.get(
+        "report_source",
+        st.session_state.get("active_source", "Mock (demo)"),
+    )
+
+    if report is None or config is None:
+        st.warning("No generated report is available yet.")
+        if st.button("Go to analysis", type="primary"):
+            _open_view(VIEW_ANALYZE)
+        return
+
+    render_mode_banner(source)
+    render_report(report, config)
 
 
 def _display_value(value: Any) -> Any:
@@ -581,12 +1136,14 @@ def _display_value(value: Any) -> Any:
     return value
 
 
-def render_evaluation_tab() -> None:
-    st.markdown("## Evaluation")
-    st.write("Mock held-out evaluation only. These aggregate metrics are kept separate from an individual genome report.")
-    n = int(st.number_input("Held-out genomes", min_value=10, max_value=500, value=60, step=10))
-    seed = int(st.number_input("Random seed", min_value=0, value=20260718, step=1))
-    if st.button("Run mock evaluation"):
+def render_evaluation_page() -> None:
+    st.write("Mock held-out evaluation only. Aggregate metrics stay separate from individual genome reports.")
+    input_columns = st.columns(2, gap="medium")
+    with input_columns[0]:
+        n = int(st.number_input("Held-out genomes", min_value=10, max_value=500, value=60, step=10))
+    with input_columns[1]:
+        seed = int(st.number_input("Random seed", min_value=0, value=20260718, step=1))
+    if st.button("Run mock evaluation", use_container_width=True):
         try:
             with st.spinner("Running held-out evaluation..."):
                 eval_predictor = MockPredictor()
@@ -631,14 +1188,39 @@ def render_evaluation_tab() -> None:
 def main() -> None:
     st.set_page_config(page_title="GENOME FIREWALL", page_icon="🧬", layout="wide")
     inject_styles()
-    st.title("GENOME FIREWALL")
+    active_view = st.session_state.get("active_view", VIEW_ANALYZE)
+    if active_view not in {VIEW_ANALYZE, VIEW_REPORT, VIEW_EVALUATION}:
+        active_view = VIEW_ANALYZE
+        st.session_state["active_view"] = active_view
+    if active_view == VIEW_REPORT and st.session_state.get("clinical_report") is None:
+        active_view = VIEW_ANALYZE
+        st.session_state["active_view"] = active_view
+
+    if active_view == VIEW_ANALYZE:
+        render_hero()
+    elif active_view == VIEW_REPORT:
+        render_page_masthead(
+            "Clinical report",
+            "Generated result",
+            "Review each antibiotic decision and open its evidence details as needed.",
+        )
+    else:
+        render_page_masthead(
+            "Evaluation",
+            "Model quality",
+            "Run the held-out mock panel without loading the genome-analysis workspace.",
+        )
+
     render_disclaimer()
-    source, predictor, extractor, config, species = _sidebar()
-    clinical_tab, evaluation_tab = st.tabs(["Clinical Report", "Evaluation"])
-    with clinical_tab:
-        render_clinical_tab(source, predictor, extractor, config, species)
-    with evaluation_tab:
-        render_evaluation_tab()
+    render_navigation(active_view)
+
+    if active_view == VIEW_ANALYZE:
+        source, predictor, extractor, config, species = _sidebar()
+        render_analysis_page(source, predictor, extractor, config, species)
+    elif active_view == VIEW_REPORT:
+        render_report_page()
+    else:
+        render_evaluation_page()
 
 
 if __name__ == "__main__":
