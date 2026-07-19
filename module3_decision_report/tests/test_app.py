@@ -70,6 +70,8 @@ def test_theme_keeps_pastel_green_tokens_and_mobile_breakpoints(monkeypatch):
     assert "color-scheme: light" in stylesheet
     assert "-webkit-text-fill-color: var(--ink)" in stylesheet
     assert ".stButton > button p" in stylesheet
+    assert "html, body, .stApp {" in stylesheet
+    assert 'html, body, [class*="st-"]' not in stylesheet
 
 
 def test_streamlit_theme_is_pinned_to_light_pastel_green():

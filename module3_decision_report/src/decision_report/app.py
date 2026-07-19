@@ -80,7 +80,9 @@ def inject_styles() -> None:
             --shadow-sm: 0 8px 24px rgba(40, 91, 62, 0.07);
             --shadow-md: 0 18px 48px rgba(40, 91, 62, 0.10);
         }
-        html, body, [class*="st-"] {
+        /* Let typography inherit so Streamlit's icon classes keep their
+           Material Symbols font instead of exposing names like arrow_right. */
+        html, body, .stApp {
             font-family: "Avenir Next", "SF Pro Text", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
             font-size: 16px;
         }
@@ -508,7 +510,7 @@ def inject_styles() -> None:
             }
         }
         @media (max-width: 640px) {
-            html, body, [class*="st-"] { font-size: 15px; }
+            html, body, .stApp { font-size: 15px; }
             .block-container { padding: .75rem .8rem 2.5rem; }
             .hero-shell { padding: 1.15rem 1rem; margin-bottom: .8rem; }
             .hero-title { font-size: clamp(2.15rem, 13vw, 3rem); }
