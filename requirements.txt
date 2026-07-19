@@ -1,0 +1,13 @@
+# Dependency manifest for Streamlit Community Cloud.
+#
+# Cloud checks out this repo and runs `pip install -r requirements.txt` from the
+# repo root, so the relative path below resolves. Installing the Module 3
+# package makes `decision_report` importable (setuptools src-layout), and the
+# [app] extra pulls in Streamlit. The base deps (numpy, pandas, pyyaml) are
+# listed explicitly for transparency; they also come transitively via the
+# package's pyproject.
+streamlit>=1.40
+numpy>=1.24
+pandas>=2.0
+pyyaml>=6.0
+./module3_decision_report[app]
